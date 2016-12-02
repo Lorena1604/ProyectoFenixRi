@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Registrar actividad"/></h1>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="IdActividad:" for="idActividad" />
+                    <p:inputText id="idActividad" value="#{actividadControlador.actividad.idActividad}" title="IdActividad" required="true" requiredMessage="The IdActividad field is required."/>
+                    <p:outputLabel value="Lugar:" for="lugar" />
+                    <p:inputText id="lugar" value="#{actividadControlador.actividad.lugar}" title="Lugar" required="true" requiredMessage="The Lugar field is required."/>
+                    <p:outputLabel value="FechaYhoraDeActividad:" for="fechaYhoraDeActividad" />
+                    <p:inputText id="fechaYhoraDeActividad" value="#{actividadControlador.actividad.fechaYhoraDeActividad}" placeholder="MM/dd/yyyy HH:mm:ss" title="FechaYhoraDeActividad" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </p:inputText>
+                    
+                    
+        <!--            <p:outputLabel value="Fecha y hora de actividad:" for="fechaYhoraDeActividad" />
+                    <p:calendar value="#{actividadControlador.actividad.fechaYhoraDeActividad}" id="fechaYhoraDeActividad" locale="es" required="true" pattern="dd/MM/yyyy"/>
+                    <p:message for="fechaYhoraDeActividad"/>
+                    -->
+                    
+                    <p:outputLabel value="DescripcionActividad:" for="descripcionActividad" />
+                    <p:inputTextarea rows="4" cols="30" id="descripcionActividad" value="#{actividadControlador.actividad.descripcionActividad}" title="DescripcionActividad" required="true" requiredMessage="The DescripcionActividad field is required."/>
+                    <p:outputLabel value="TipoDeActividad:" for="tipoDeActividad" />
+                    <p:selectOneMenu id="tipoDeActividad" value="#{actividadControlador.actividad.tipoDeActividad}" required="true" requiredMessage="The TipoDeActividad field is required." converter="actividadConvert">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{actividadControlador.tipoActividad}" var="item"                                       
+                                       itemLabel="#{item.descripcion}"
+                                           itemValue="#{item}"/> 
+                            <f:selectItems/>
+                    </p:selectOneMenu>
+                    <h:commandButton actionListener="#{actividadControlador.registrarActividad() }" value="registrar" />
+                    
+                </p:panelGrid>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+

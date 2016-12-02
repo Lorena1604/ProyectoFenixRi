@@ -1,0 +1,458 @@
+
+body {
+    height: 100%;
+    width:95%;
+    margin:auto;
+    background: linear-gradient(#585858,#848484,rgb(256, 256, 256));
+    background-attachment:fixed;
+    font-family:"Gabriola";
+}
+header{
+    width:95%;
+    margin-bottom:10px;
+}
+
+/*label{
+    display: none;
+    background:rgba(0, 0, 0, .7);
+    width: 100%;
+}*/
+.formularioContacto input:focus:invalid{
+    background: #fff url(../imagenes/alerta.png) no-repeat 98% center;
+    box-shadow: 0 0 5px #d45252;
+    background-size: 16px 16px;
+    border-color: #b03535;
+}
+.formularioContacto input:required:valid {
+    background: #fff url(../imagenes/chulo.jpg) no-repeat 98% center;
+    background-size: 16px 16px;
+    box-shadow: 0 0 5px #5cd053;
+    border-color: #28921f;
+}
+.formularioContacto textarea:focus:invalid{
+    background: #fff url(../imagenes/alerta.png) no-repeat 98% center;
+    box-shadow: 0 0 5px #d45252;
+    background-size: 16px 16px;
+    border-color: #b03535;
+}
+.formularioContacto textarea:required:valid {
+    background: #fff url(../imagenes/chulo.jpg) no-repeat 98% center;
+    background-size: 16px 16px;
+    box-shadow: 0 0 5px #5cd053;
+    border-color: #28921f;
+}
+
+.glyphicon{
+    color: #fff;
+    background:rgba(0, 0, 0, .7);
+    display: none;
+    padding: 16px;
+    cursor: pointer;
+}
+
+#btn-menu{
+    display: none;
+}
+.thumbnail{
+
+    background: none;
+    color: #fff;
+    border: none;
+}
+.carousel{
+    width:95%;
+
+}
+.carousel,
+.item,
+.active {
+    height: 500px;
+    margin:auto;
+}
+
+.carousel-inner {
+    height: 100%;
+
+}
+
+.fill {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.menu-fixed {
+    position:fixed;
+    transition: all 0.5s;
+    z-index:1000;
+    top:0;
+    width:100%;
+    box-shadow:0px 4px 3px rgba(255,255,255,.5);
+
+}
+.contenedorMenu {
+    width: 100%;
+    margin:auto;
+}
+ 
+.contenedorMenu p {
+    margin-bottom:40px;
+}
+.contenedorMenu nav {
+    font-size:27px;
+    background:rgba(0, 0, 0, .7);
+    margin-bottom:10px;
+}
+ 
+.contenedorMenu nav ul {
+     padding-left: 9%;
+    list-style: none;
+    overflow: hidden;
+}
+ 
+.contenedorMenu nav ul li {
+
+    float: left;
+    margin-left:1%;
+}
+ 
+.contenedorMenu nav ul li a {
+    text-align:center;
+    display: block;
+    padding:15px;
+    color:#fff;
+    text-decoration: none;
+    transition: all 0.7s;
+}
+ 
+.contenedorMenu nav ul li a:hover {
+    background:rgba(60, 153, 204, .7);
+    color:#fff;
+    text-decoration:none;
+}
+@media (max-width: 768px){
+    .carousel{
+        width:100%;
+        height: 100%;
+
+    }
+    .glyphicon{
+        display: block;
+    }
+    .menu{
+        display: none;
+    }
+    .contenedorMenu nav ul {
+        flex-direction: column;
+    }
+    .contenedorMenu nav ul li{
+        width: 100%;
+    }
+    #btn-menu:checked ~.menu{
+        display: block;
+    }
+    .contactenos{
+        min-width: 90%;
+    }
+    .formularioContacto{
+        min-width: 90%;
+    }
+    
+}
+.contenedor h4,p{
+    color:#000;
+     font-weight:100;
+}
+.contenedor h4{
+    text-align:center;
+    font-weight:700;
+    font-size:28px;
+}
+.contenedor p{
+    text-align:justify;
+    font-size:23px;
+}
+
+#FR{
+    margin-top: 85px;
+}
+.boton-top{
+   font-size: 25px;
+   padding: 1%;
+   color: #B40404;
+   display: none;
+   position: fixed;
+   bottom: 20px;
+   right: 20px;
+   cursor: pointer;
+}
+
+
+.botonVerMas{
+    font-size:19px;
+    color:#900;
+}
+.botonVerMas:hover{
+    font-size:19px;
+    color:#c00;
+}
+/*----------------------
+------ iniciar sesion
+-------------------------*/
+.formularioSesion{
+    width:60%;
+    border-radius:10px;
+    padding: 8px;
+    padding-top:0;
+    margin:auto;
+    font-family:"Californian FB";
+}
+.formularioSesion button{
+    margin:auto;
+    color:#fff;
+    font-size:23px;
+    color:black;
+}
+.formularioSesion button:hover{
+    margin:auto;
+    color:#fff;
+    color:black;
+   
+}
+
+.formularioSesion h3{
+    font-size:25px;
+    font-weight:700;
+    text-align:center;
+}
+.formularioSesion .form-group label{
+    font-size:21px;
+}
+.info{
+    min-height:520px;
+}
+
+/*-----------------------
+    MISION   -------
+    ---------------------*/
+.mision{
+    width:70%;
+}
+.mision h4{
+    text-align:center;
+    font-weight:700;
+    font-size:30px;
+    color:#000;
+}
+
+.mision p{
+    margin:10px;
+    color:#000;
+    font-size:27px;
+}
+
+
+/*---------------------
+----- Vision
+------------------------*/
+.vision{
+
+    width:70%;
+}
+.vision h4{
+    text-align:center;
+    font-weight:700;
+    font-size:30px;
+    color:#000;
+}
+
+.vision p{
+    margin:10px;
+    color:#000;
+    font-size:27px;
+}
+/*-----------
+------- QUIENES SOMOS
+-------------------*/
+.quienesSomos{
+
+    width:70%;
+}
+.quienesSomos h4{
+	color:#000;
+    margin:10px;
+    text-align:center;
+    font-weight:700;
+    font-size:30px;
+}
+
+.quienesSomos h3{
+	color:#000;
+    margin:10px;
+    font-weight:100;
+    font-size:25px;
+}
+
+
+.quienesSomos p{
+    margin:10px;
+    color:#000;
+    font-size:27px;
+}
+.quienesSomos img{
+    width:230px;
+    height:240px;
+}
+
+.quienesSomos span{
+    text-align:center;
+}
+
+/* ----------------
+CONTACTENOS--------
+-----------------*/
+.contactenos{
+    width:95%;
+}
+.formularioContacto{
+    border: 2px solid #fff;
+    font-family:"Gabriola";
+    width:90%;
+    font-size:20px;
+    text-align:left;
+    color:#fff;
+    background-attachment:fixed;
+    background: linear-gradient(#002A61,#000, #00285C);
+    background-size:100%;
+    padding:20px;
+    padding-top:5px;
+    margin:20px;
+    border-radius:10px;
+}
+.formularioContacto h3{
+    font-size:29px;
+    font-weight:700;
+    text-align:center;
+}
+.formularioContacto h4{
+    font-size:24px;
+    font-weight:100;
+   
+}
+.formularioContacto button{
+    padding:5px;
+    margin:auto;
+    color:#fff;
+    font-size:25px;
+    background:rgba(0, 0, 0, .8);
+    transition: all 0.5s;
+    font-weight:100;
+}
+.formularioContacto button:hover{
+    margin:auto;
+    background:rgba(255, 255, 255, .8);
+    color:#000;
+
+
+}
+.formularioContacto button:active{
+    background:rgba(0, 0, 0, .8);
+    color:#fff;
+    font-weight: 700;
+}
+.formularioContacto label{
+    font-size:25px;
+    font-weight:100;
+}
+
+.formularioContacto input,textarea{
+    font-size:22px;
+    font-weight:100;
+}
+.formularioContacto textarea{
+    font-size:22px;
+    font-weight:100;
+}
+.transparente{
+    background-color:rgba(240, 248, 255, 0.8);
+}
+
+#lblName{
+    display: none;
+}
+#lblNamen{
+    display: none;
+}
+footer {
+    margin: 50px 13px;
+    color: white;
+    text-align:center;
+    font-size:22px;
+    
+}
+footer .Botoningles{
+    margin:auto;
+    width:50px;
+    height:40px;
+    background-image:url('../ingles/imagenesIngles/simbolo.png');
+    background-size:100% 100%;
+    color:#000;
+}
+footer .BotonEspañol{
+    margin:auto;
+    width:50px;
+    height:40px;
+    background-image:url('../ingles/imagenesIngles/simColombia.png');
+    background-size:100% 100%;
+    color:#000;
+}
+
+.redesSociales{ 
+    list-style:none;
+    transition: all 0.5s;
+    padding-left:10%;
+}
+
+.redesSociales li{
+    margin-right:15px;
+    float:left;
+}
+.redesSociales p{
+   text-align:left;
+   font-size:22px;
+    
+}
+.facebook{
+    width:41px;
+    height:48px;
+    background-image:url('../imagenes/facebook.png');
+    background-repeat:no-repeat;
+    transition:all 1s;
+}
+.facebook:hover{
+    background-image:url('../imagenes/facebook2.png');
+    background-repeat:no-repeat;
+}
+.youtube{
+    text-align:center;
+    width:41px;
+    height:48px;
+    background-image:url('../imagenes/youtube.png');
+    background-repeat:no-repeat;
+    transition:all 1s;
+}
+.youtube:hover{
+    background-image:url('../imagenes/youtube2.png');
+    background-repeat:no-repeat;
+}
+
+
+
+
+
+
+
