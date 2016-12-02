@@ -35,9 +35,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Localidad.findByDescripcion", query = "SELECT l FROM Localidad l WHERE l.descripcion = :descripcion")})
 public class Localidad implements Serializable {
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idLocalidad", fetch = FetchType.EAGER)
-    private List<Usuario> usuarioList;
-
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -112,15 +109,6 @@ public class Localidad implements Serializable {
     @Override
     public String toString() {
         return "co.edu.fenixri.backend.controladores.Localidad[ idLocalidad=" + idLocalidad + " ]";
-    }
-
-    @XmlTransient
-    public List<Usuario> getUsuarioList() {
-        return usuarioList;
-    }
-
-    public void setUsuarioList(List<Usuario> usuarioList) {
-        this.usuarioList = usuarioList;
     }
     
 }

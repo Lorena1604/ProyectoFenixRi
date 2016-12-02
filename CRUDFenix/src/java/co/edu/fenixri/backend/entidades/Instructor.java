@@ -36,26 +36,17 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Instructor.findByIdentificacion", query = "SELECT i FROM Instructor i WHERE i.identificacion = :identificacion")})
 public class Instructor implements Serializable {
 
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "idInstructor")
-    private Integer idInstructor;
-    @Basic(optional = false)
-    @NotNull
-    @Lob
-    @Column(name = "licenciaDeportiva")
-    private byte[] licenciaDeportiva;
-    @JoinColumn(name = "idInstructor", referencedColumnName = "idUsuario", insertable = false, updatable = false)
-    @OneToOne(optional = false, fetch = FetchType.EAGER)
-    private Usuario usuario;
-
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
     @Column(name = "identificacion")
     private Integer identificacion;
+    @Basic(optional = false)
+    @NotNull
+    @Lob
+    @Column(name = "licenciaDeportiva")
+    private byte[] licenciaDeportiva;
     @JoinColumn(name = "identificacion", referencedColumnName = "idUsuario", insertable = false, updatable = false)
     @OneToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario usuario;
@@ -82,6 +73,13 @@ public class Instructor implements Serializable {
         this.identificacion = identificacion;
     }
 
+    public byte[] getLicenciaDeportiva() {
+        return licenciaDeportiva;
+    }
+
+    public void setLicenciaDeportiva(byte[] licenciaDeportiva) {
+        this.licenciaDeportiva = licenciaDeportiva;
+    }
 
     public Usuario getUsuario() {
         return usuario;
@@ -123,64 +121,6 @@ public class Instructor implements Serializable {
     @Override
     public String toString() {
         return "co.edu.fenixri.backend.controladores.Instructor[ identificacion=" + identificacion + " ]";
-    }
-
-    public Instructor(Integer idInstructor) {
-        this.idInstructor = idInstructor;
-    }
-
-    public Instructor(Integer idInstructor, byte[] licenciaDeportiva) {
-        this.idInstructor = idInstructor;
-        this.licenciaDeportiva = licenciaDeportiva;
-    }
-
-    public Integer getIdInstructor() {
-        return idInstructor;
-    }
-
-    public void setIdInstructor(Integer idInstructor) {
-        this.idInstructor = idInstructor;
-    }
-
-    public byte[] getLicenciaDeportiva() {
-        return licenciaDeportiva;
-    }
-
-    public void setLicenciaDeportiva(byte[] licenciaDeportiva) {
-        this.licenciaDeportiva = licenciaDeportiva;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idInstructor != null ? idInstructor.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Instructor)) {
-            return false;
-        }
-        Instructor other = (Instructor) object;
-        if ((this.idInstructor == null && other.idInstructor != null) || (this.idInstructor != null && !this.idInstructor.equals(other.idInstructor))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "co.edu.fenixri.backend.entidades.Instructor[ idInstructor=" + idInstructor + " ]";
     }
     
 }
