@@ -1,0 +1,416 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
+
+        <title>Estudiante | Calendario</title>
+        <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css"/>
+        <link rel="shortcut icon" type="image/x-icon" href="../imagenes/Logo-FENIX.ico"/>
+        <link href="../css/estilosRoles.css" rel="stylesheet"/>
+        <link href="../instructor/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="../instructor/bower_components/bootstrap/dist/css/FullCalendario.min.css" rel="stylesheet"/>
+        <link href="../instructor/dist/css/sb-admin-2.css" rel="stylesheet"/>
+        <script src="../js/jquery.js"></script>
+    </head>
+
+    <body class="fondoRoles">
+        <div class="container-fluid display-table">
+            <div class="row display-table-row">
+                <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align" id="navigation">
+                    <ol class="breadcrumb">
+                        <li><a href="inicio.html">Inicio</a></li>
+                        <li class="active">Calendario</li>
+                    </ol>
+                    <div class="logo">
+                        <img src="../imagenes/Logo-FENIX-RI.png" class="hidden-xs hidden-sm" title="Logo FÉNIX RI"/>
+
+                    </div>
+                    <div class="navi">
+                        <ul>
+                            <li><a href="inicio.xhtml" style="text-decoration:none;" ><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Inicio</span></a></li>
+
+                            <li><a href="fichaTecnica.xhtml" style="text-decoration:none;"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Perfil</span></a></li>
+
+                            <li><a href="calendario.xhtml" style="text-decoration:none;"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Calendario</span></a></li>
+
+                            <li><a href="pagos.xhtml" style="text-decoration:none;"><i class="fa fa-money" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Pagos</span></a></li>
+
+                            <li><a href="sugerencias.xhtml" style="text-decoration:none;"><i class="fa fa-envelope-o" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Sugerencias</span></a></li>
+
+                            <li><a href="evidencias.xhtml" style="text-decoration:none;"><i class="fa fa-files-o" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Evidencias</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-10 col-sm-11 display-table-cell v-align">
+
+                    <div class="row">
+                        <header>
+                            <div class="col-md-7">
+                                <nav class="navbar-default pull-left">
+                                    <div class="navbar-header">
+                                        <button type="button" class="navbar-toggle collapsed" data-toggle="offcanvas" data-target="#side-menu" aria-expanded="false">
+                                            <span class="sr-only">Toggle navigation</span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                        </button>
+                                    </div>
+                                </nav>
+                                <div class="titulo hidden-xs hidden-sm">
+                                    <h3>Estudiante</h3>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="header-rightside">
+                                    <ul class="list-inline header-top pull-right">
+                                        <!-- 
+                                        icono mensaje  
+                                        -->                 
+                                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope" aria-hidden="true"></i><b class="caret"></b></a>
+                                            <ul class="dropdown-menu"> 
+                                                <li> 
+                                                    <div> 
+
+                                                        <a href="suguerencias/leer.html">Malcon Alejandro</a>
+                                                        <span class="pull-right text-muted">
+                                                            <em>Hace 5 minutos</em>
+                                                        </span>
+
+                                                    </div>
+                                                    <div>Deseo hacer...</div>
+                                                </li>
+                                                <li class="divider"></li>
+                                                <li> 
+                                                    <div> 
+
+                                                        <a href="suguerencias/leer.html">Juan David</a>
+                                                        <span class="pull-right text-muted">
+                                                            <em>Hace 28 minutos</em>
+                                                        </span>
+
+                                                    </div>
+                                                    <div>Deseo hacer...</div>
+                                                </li>
+                                                <li class="divider"></li>
+                                                <li> 
+                                                    <div> 
+
+                                                        <a href="suguerencias/leer.html">Leidy Julieth</a>
+                                                        <span class="pull-right text-muted">
+                                                            <em>Hace 11 horas</em>
+                                                        </span>
+
+                                                    </div>
+                                                    <div>Deseo hacer...</div>
+                                                </li>
+                                                <li class="divider"></li>
+                                                <li>
+                                                    <a class="text-center" href="#">
+                                                        <a href="sugerencias.html">Mas mensajes</a>
+                                                    </a>
+                                                </li>
+                                            </ul>  
+
+                                        </li>
+                                        <!--  -->
+                                        <!-- ICONO CAMPANA DE MENSAJES -->
+
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle icon-info" data-toggle="dropdown">
+                                                <i class="fa fa-bell" aria-hidden="true">
+
+                                                </i>
+                                                <span class="label label-danger">3
+                                                </span>
+                                                <b class="caret"></b>
+                                                <ul class="dropdown-menu"> 
+                                                    <li> 
+                                                        <div> 
+
+                                                            <a href="calendario.html">Torneo</a>
+                                                            <span class="pull-right text-muted">
+                                                                <em>Hace 5 minutos</em>
+                                                            </span>
+
+                                                        </div>
+                                                        <div>Deseo hacer...</div>
+                                                    </li>
+                                                    <li class="divider"></li>
+                                                    <li> 
+                                                        <div> 
+
+                                                            <a href="calendario.html">Entrenamiento..</a>
+                                                            <span class="pull-right text-muted">
+                                                                <em>Hace 28 minutos</em>
+                                                            </span>
+
+                                                        </div>
+                                                        <div>Deseo hacer...</div>
+                                                    </li>
+                                                    <li class="divider"></li>
+                                                    <li> 
+                                                        <div> 
+
+                                                            <a href="calendario.html">Entrenamiento..</a>
+                                                            <span class="pull-right text-muted">
+                                                                <em>Hace 11 horas</em>
+                                                            </span>
+
+                                                        </div>
+                                                        <div>Deseo hacer...</div>
+                                                    </li>
+                                                    <li class="divider"></li>
+                                                    <li>
+                                                        <a class="text-center" href="#">
+                                                            <a href="calendario.html">Torneo</a>
+                                                        </a>
+                                                    </li>
+                                                </ul>  
+                                            </a>
+                                        </li>
+                                        <!--  -->
+                                        <!-- FOTO CERRAR SESION -->
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="../imagenes/user.jpg" alt="Estudiante"/>
+                                                <b class="caret"></b></a>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <div class="navbar-content">
+                                                        <span>Juan David Aranda Celendia</span>
+                                                        <p>
+                                                            Cinturón : Negro
+                                                        </p>
+                                                        <div class="divider">
+                                                        </div>
+                                                        <a href="../../iniciarSesion.html" class="link btn btn-link" role="button">Cerrar sesión</a>
+
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </header>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-5 col-xs-12">
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h2 style="color: #fff; text-align: center; font-size: 23px;">Calendario de Actividades</h2>
+                                <hr/>
+                                <div class="row">
+                                    <div class="col-md-6" style="width:100%;">
+                                        <div class="x_panel">
+                                            <div class="x_title">
+
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <div class="x_content">
+                                                <div id='calendar' style="background:#fff;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="CalenderModalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h4 class="modal-title" id="myModalLabel2">Editar Calendario de Actividades</h4>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <div id="testmodal2" style="padding: 5px 20px;">
+                                            <form id="antoform2" class="form-horizontal calender" role="form">
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label">Actividad</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="title2" name="title2" readonly="">
+                                                        </input> 
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">Lugar</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="lol" name="lol" value="Biblioteca Virgilio Barco" readonly="">
+                                                        </input>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">Hora</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="time" class="form-control" id="tittle" value="11:45:00" readonly="">
+                                                        </input>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label">Descripción</label>
+                                                    <div class="col-sm-9">
+                                                        <textarea class="form-control" style="height:80px;" id="descr" name="descr" readonly="">Se va a realizar una actividad en la cual tendremos como invitado al representante de la academia colombiana de taekwondo, ¡estar atentos con la puntualidad!</textarea>
+                                                    </div>
+                                                </div>
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default antoclose2" data-dismiss="modal">Cerrar</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="fc_edit" data-toggle="modal" data-target="#CalenderModalEdit"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <span class="boton-top fa fa-arrow-up"></span>
+
+        <script type="text/javascript">
+            $('.boton-top').click(function () {
+                $('body,html').animate({scrollTop: 0}, 500);
+                return false;
+            });
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 0) {
+                    $('.boton-top').fadeIn();
+                } else {
+                    $('.boton-top').fadeOut();
+                }
+            });
+        </script> 
+
+        <script  type="text/javascript" >
+            $(document).ready(function () {
+                $('[data-toggle="offcanvas"]').click(function () {
+                    $("#navigation").toggleClass("hidden-xs");
+                });
+            });
+        </script>
+        ..................................................................................
+
+        <script src="../instructor/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="../instructor/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="../instructor/bower_components/bootstrap/dist/js/fastclick.js"></script>
+        <script src="../instructor/bower_components/bootstrap/dist/js/nprogress.js"></script>
+        <script src="../instructor/bower_components/bootstrap/dist/js/moment.min.js"></script>
+        <script src="../instructor/bower_components/bootstrap/dist/js/fullcalendar.min.js"></script>
+
+        <script src="../instructor/dist/js/sb-admin-2.js"></script>
+
+        <script>
+            $(window).load(function () {
+                var date = new Date(),
+                        d = date.getDate(),
+                        m = date.getMonth(),
+                        y = date.getFullYear(),
+                        started,
+                        categoryClass;
+
+                var calendar = $('#calendar').fullCalendar({
+                    header: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'month,agendaWeek,agendaDay'
+                    },
+                    select: function (start, end, allDay) {
+                        $('#fc_create').click();
+
+                        started = start;
+                        ended = end;
+
+                        $(".antosubmit").on("click", function () {
+                            var lol = $("#lol").val();
+                            var title = $("#title").val();
+                            if (end) {
+                                ended = end;
+                            }
+
+                            categoryClass = $("#event_type").val();
+
+                            if (title) {
+                                calendar.fullCalendar('renderEvent', {
+                                    title: title,
+                                    start: started,
+                                    end: end,
+                                    allDay: allDay
+                                },
+                                        true // make the event "stick"
+                                        );
+                            }
+
+                            $('#title').val('');
+
+                            calendar.fullCalendar('unselect');
+
+                            $('.antoclose').click();
+
+                            return false;
+                        });
+                    },
+                    eventClick: function (calEvent, jsEvent, view) {
+                        $('#fc_edit').click();
+                        $('#title2').val(calEvent.title);
+
+                        categoryClass = $("#event_type").val();
+
+                        $(".antosubmit2").on("click", function () {
+                            calEvent.title = $("#title2").val();
+
+                            calendar.fullCalendar('updateEvent', calEvent);
+                            $('.antoclose2').click();
+                        });
+
+                        calendar.fullCalendar('unselect');
+                    },
+                    editable: true,
+                    events: [{
+                            title: 'Entrenamiento',
+                            lol: 'hola',
+                            start: new Date(y, m, 1)
+                        }, {
+                            title: 'Torneo',
+                            start: new Date(y, m, d - 5),
+                            end: new Date(y, m, d - 2)
+                        }, {
+                            title: 'Torneo',
+                            start: new Date(y, m, d, 10, 30),
+                            allDay: false
+                        }, {
+                            title: 'Entrenamiento Especial',
+                            start: new Date(y, m, d + 14, 12, 0),
+                            end: new Date(y, m, d, 14, 0),
+                            allDay: false
+                        }, {
+                            title: 'Entrenamiento Especial',
+                            start: new Date(y, m, d + 1, 19, 0),
+                            end: new Date(y, m, d + 1, 22, 30),
+                            allDay: false
+                        }, {
+                            title: 'Entrenamiento Especial',
+                            start: new Date(y, m, 28),
+                            end: new Date(y, m, 29),
+                        }]
+                });
+            });
+        </script>
+    </body>
+</html>
+

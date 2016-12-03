@@ -1,0 +1,253 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <head>
+
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
+
+        <title>FÉNIX RI</title>
+        <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+        <link href="css/bootstrap.min.css" rel="stylesheet"/>
+        <link rel="shortcut icon" type="image/x-icon" href="imagenes/Logo-FENIX.ico"/>
+        <link href="css/estilos.css" rel="stylesheet"/>
+
+
+    </head>
+
+    <body>
+
+        <nav class="navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="contenedorMenu">
+                    <input type="checkbox" id="btn-menu"/>
+                    <label for="btn-menu" class="glyphicon glyphicon-align-justify"></label>
+
+                    <nav class="menu">
+                        <ul>
+                            <li><a href="index.xhtml">Inicio</a></li>
+                            <li><a href="mision.xhtml">Misión</a></li>
+                            <li><a href="vision.xhtml">Visión</a></li>
+                            <li><a href="quienesSomos.html">¿Quíenes somos?</a></li>
+                            <li><a href="contactenos.xhtml"  onclick="templatemo_map();">Contáctenos</a></li>
+                            <li><a href="iniciarSesion.xhtml">Iniciar sesión</a></li>
+                        </ul>
+
+                    </nav>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+        <header class="container">
+            <div id="myCarousel" class="carousel slide content">
+
+                <div class="carousel-inner" id="FR">
+                    <div class="item active">
+
+                        <div class="fill" style="background-image:url('imagenes/imagen7.jpg');"></div>
+
+                    </div>
+                    <div class="item">
+
+                        <div class="fill" style="background-image:url('imagenes/imagen11.jpg');"></div>+
+
+                    </div>
+                    <div class="item">
+
+                        <div class="fill" style="background-image:url('imagenes/imagen14.jpg');"></div>
+
+                    </div>
+                </div>       
+            </div>
+        </header>
+
+        <div class="container">
+            <hr/>
+            <div class="thumbnail">
+
+                <img src="imagenes/imgcinto.png"/>
+            </div>
+        </div>
+        <div class="container contenedor">
+            <hr/>
+            <div class="row">
+                <div class="col-sm-6 col-md-3">
+                    <center><img src="imagenes/letras.jpg" /></center>
+                    <div class="info">
+                        <h4>¿Qué es el Taekwondo?</h4>
+                        <p>El taekwondo es un arte marcial transformado en deporte olímpico de combate desde el año 1988, cuando fue introducido como deporte de exhibición en los Juegos Olímpicos realizados en la ciudad de Seul en Corea del Sur. El significado de este es la filosofía del puño y la patada...
+
+                            <button class="btn btn-link botonVerMas" id="boton1" onclick="vermas('uno', 'boton1')">Ver más</button> </p>
+                        <div id="uno" style="display: none;">
+
+                            <p>
+                                <strong>TAE:</strong> Pie, patada.
+                            </p>
+                            <p>
+                                <strong>KWON:</strong> Puño, bloqueo.
+                            </p>
+                            <p>
+                                <strong>DO:</strong> Camino, arte, método o filosofía de vida.
+                            </p>
+                            <p>
+                                Por tanto, la palabra "taekwondo" podría traducirse como «El camino de pies y manos», lo cual hace referencia a que es un arte marcial que utiliza únicamente los pies, las manos y otras partes del cuerpo (como por ejemplo: las rodillas y los codos), prescindiendo por completo del uso de armas, tanto tradicionales como modernas.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-3">
+
+                    <center><img src="imagenes/taeyop.jpg"/></center>
+                    <div class="info">
+                        <h4>Historia del Taekwondo en Colombia</h4>
+                        <p>El taekwondo llego a Colombia en 1964 y empezó a funcionar en las ciudades de Bogota y Medellin por el profesor coreano Sahn Young Han. en Medellin se practico en 1966 por el profesor  coreano  Huan Su Sohn... 
+                        </p>
+                        <button class="btn btn-link botonVerMas" id="boton2" onclick="vermas('dos', 'boton2')">Ver más</button>
+
+                        <div id="dos" style="display: none;">
+                            <p> Para el año 1967 se institucionaliza y oficializa el taekwondo  en Colombia, a través de un convenio de la universidades de América en Bogota, y el gobierno de Corea, junto con la llega del maestro Kyong Deuk Lee al país.
+
+                            </p>
+                            <p>
+                                Muchos otros maestros coreanos influyen en le taekwondo colombiano, la mayoría de manera fugaz, pero de alguna manera dejaron huella en los adeptos de diferentes partes del país.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-sm-6 col-md-3">
+
+                    <center> <img src="imagenes/hhh.jpg"/></center>
+                    <div class="info">
+                        <h4>Características generales</h4>
+                        <p>El taekwondo se caracteriza por su amplio uso de las técnicas de pierna y patadas, que son mucho más variadas y tienen mayor protagonismo que en la mayoría de las artes marciales. Asimismo, la depurada técnica de las mismas las hacen destacar por su gran rapidez y precisión...
+                        </p>
+                        <button class="btn btn-link botonVerMas" id="boton3" onclick="vermas('tres', 'boton3')">Ver más</button>
+
+                        <div id="tres" style="display: none;">
+
+                            <p>La importancia dada a las técnicas de puño y mano abierta, depende del estilo (ITF o WTF) practicado, del entrenador y de la escuela donde se practique. Lastimosamente en la actualidad, muchas escuelas tienden a descuidar el entrenamiento de las técnicas de mano abierta y puño, ya que su uso está cada vez más restringido en la competición, dándole más puntaje a las patadas. No obstante, un buen entrenamiento debe incluir tanto las técnicas de mano como las técnicas de pierna del Taekwondo, ya que no debe estar enfocado únicamente al éxito en la competición, sino al dominio y conocimiento del arte marcial.</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <center> <img src="imagenes/Dobok.png"/></center>
+                    <div class="info">
+                        <h4>El Dobok</h4>
+                        <p> 
+                            Es el uniforme que se utiliza en la práctica de las artes marciales coreanas. Do significa 'la senda de la vida' y bok significa 'ropa de entrenamiento'.
+                        </p>
+                        <p>
+                            Los colores tradicionales del dobok son el blanco y el negro, aunque en algunas artes marciales como el Hap Ki Do se pueden encontrar...
+                            <button class="btn btn-link botonVerMas" id="boton4" onclick="vermas('cuatro', 'boton4')">Ver más</button>
+                        </p>
+                        <div id="cuatro" style="display: none;">
+                            <p> dobok de color marrón, rojo, azul, dorado, etc. El dobok consta de un saco y un pantalón.
+                            </p>
+                            <p>
+                                El saco puede ser abierto por el centro o cerrado, dependiendo del arte marcial que se practique, y tanto este como el pantalón suelen ser ligeramente holgados. En el saco se suelen bordar (viéndolo desde el punto de vista de quién se lo viste): en la parte izquierda la bandera de Corea del Sur y en la parte derecha el logotipo de la federación a la que pertenezca el practicante, ambas a la altura del pecho.
+                            </p>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="container">
+            <hr/>
+
+            <footer>
+                <div class="row footer">
+                    <div class="col-md-4">
+                        <p>Copyright &copy; FÉNIX RI 2016</p>
+                        <p>Todos los derechos reservados</p>
+                        <hr/>
+                        <a type="button" class="btn btn-link" href="roles/error404.html" title="Error 404" style="font-size:25px; color:#fff;">Error 404</a>
+                        <a type="button" class="btn btn-link" href="roles/error500.html" title="Error 404" style="font-size:25px; color:#fff;">Error 500</a>
+                    </div>
+
+                    <div class="col-md-5">
+                        <p>Teléfono: 317 785 8963</p>
+                        <p>Dirección: Avenida Carrera 60 #57 – 60</p>
+                        <p>Correo electrónico: alvarodan1@hotmail.com</p>
+                        <hr/>
+                        <a href="ingles/indexIngles.html"><div class="Botoningles" title="English"></div></a>
+                        <p>English</p>
+
+                    </div>
+
+                    <ul class="redesSociales col-md-3">
+
+                        <p>Síguenos en:</p>
+                        <li>
+                            <a href="https://www.facebook.com" target="_blank" ><div class="facebook" title="Facebook"></div></a>
+
+                        </li> 
+
+                        <li>
+                            <a href="https://www.youtube.com" target="_blank" title="YouTube"><div class="youtube"></div></a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+            </footer>
+
+        </div>
+
+        <script src="js/jquery.js"></script>
+
+        <script src="js/bootstrap.min.js"></script>
+        <span class="boton-top fa fa-arrow-up "></span>
+
+        <script type="text/javascript">
+                                $('.boton-top').click(function () {
+                                    $('body,html').animate({scrollTop: 0}, 500);
+                                    return false;
+                                });
+                                $(window).scroll(function () {
+                                    if ($(this).scrollTop() > 0) {
+                                        $('.boton-top').fadeIn();
+                                    } else {
+                                        $('.boton-top').fadeOut();
+                                    }
+                                });
+        </script>
+
+        <script>
+            $('.carousel').carousel({
+                interval: 5000 //changes the speed
+            })
+        </script>
+        <script>
+            function vermas(parrafo, boton) {
+                if (document.getElementById(parrafo).style.display == 'block') {
+                    document.getElementById(parrafo).style.display = 'none'
+                    document.getElementById(boton).innerHTML = 'Ver más'
+
+                } else {
+                    document.getElementById(parrafo).style.display = 'block'
+                    document.getElementById(boton).innerHTML = 'Ocultar'
+                }
+            }
+        </script>
+
+    </body>
+
+</html>
+
