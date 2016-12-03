@@ -1,0 +1,167 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <head>
+
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
+
+        <title>FÉNIX RI | Contáctenos</title>
+        <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+        <link href="css/bootstrap.min.css" rel="stylesheet"/>
+        <link rel="shortcut icon" type="image/x-icon" href="imagenes/Logo-FENIX.ico"/>
+        <link href="css/estilos.css" rel="stylesheet"/>
+
+
+    </head>
+
+    <body>
+
+        <nav class="navbar-fixed-top">
+            <div class="container">
+
+                <div class="contenedorMenu">
+                    <input type="checkbox" id="btn-menu">
+                        <label for="btn-menu" class="glyphicon glyphicon-align-justify"></label>
+                    </input>
+
+                    <nav class="menu">
+                        <ul>
+                            <li><a href="index.xhtml">Inicio</a></li>
+                            <li><a href="mision.xhtml">Misión</a></li>
+                            <li><a href="vision.xhtml">Visión</a></li>
+                            <li><a href="quienesSomos.xhtml">¿Quíenes somos?</a></li>
+                            <li><a href="contactenos.xhtml"  onclick="templatemo_map();">Contáctenos</a></li>
+                            <li class="botonIniciarSesion"><a href="iniciarSesion.xhtml">Iniciar sesión</a></li>
+                        </ul>
+                    </nav> 
+                </div>
+            </div>
+        </nav>
+
+        <div class="container" id="FR">
+            <hr/>
+            <div class="thumbnail">
+                <img src="imagenes/imgcinto.png"/>
+            </div>
+            <hr/>
+        </div>
+
+        <div class="container contactenos">
+            <div class="row">
+                <div class="col-md-6">
+                    <center>
+                        <form class="formularioContacto" action="" method="POST">
+                            <center><h1>Contáctenos</h1></center>
+                            <h4>Los campos con (*) son obligatorios</h4>
+
+                            <div class="form-group">
+                                <label for="nombre" title="Ingrese su nombre"> *Nombre:</label>
+                                <input type="text" class="form-control" name="nombre" onkeypress="return valido(event)" required=""/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="correo" title="Ingrese su correo"> *Correo:</label>
+                                <input type="email" class="form-control" placeholder="Nombre@ejemplo.com " id="correo" name="correo" required=""/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="mensaje" title="Escriba su mensaje">*Mensaje:</label><br />
+                                <textarea type="text" class="form-control" name="mensaje" placeholder="Escribir..." rows="5" required=""></textarea>
+                            </div>
+
+                            <button class="btn btn-block" type="submit">Enviar</button>
+
+                        </form>
+                    </center>
+                </div> 
+
+                <br/>
+
+                <div class="col-md-6">
+                    <div class="map">
+                        <iframe src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.647144249856!2d-74.09051510896707!3d4.65685692292972!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9e33e50c99ab%3A0x5ad575fb745d822d!2sBiblioteca+P%C3%BAblicaVirgilio+Barco!5e0!3m2!1ses!2sco!4v1465261825219" width="90%" height="581" frameborder="0" allowfullscreen=""></iframe></div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container">
+            <hr/>
+
+            <footer>
+                <div class="row footer">
+                    <div class="col-md-4">
+                        <p>Copyright &copy; FÉNIX RI 2016</p>
+                        <p>Todos los derechos reservados</p>
+                    </div>
+
+                    <div class="col-md-5">
+                        <p>Teléfono: 317 785 8963</p>
+                        <p>Dirección: Avenida Carrera 60 #57 – 60</p>
+                        <p>Correo electrónico: alvarodan1@hotmail.com</p>
+                        <hr/>
+                        <a href="ingles/contacUs.html"><div class="Botoningles" title="English"></div></a>
+                        <p>English</p>
+                    </div>
+                    <ul class="redesSociales col-md-3">
+
+                        <p>Síguenos en:</p>
+                        <li>
+                            <a href="https://www.facebook.com" target="_blank" ><div class="facebook" title="Facebook"></div></a>
+
+                        </li> 
+
+                        <li>
+                            <a href="https://www.youtube.com" target="_blank" title="YouTube"><div class="youtube"></div></a>
+                        </li>
+                    </ul>
+                </div>
+            </footer>
+        </div>
+
+        <script>
+            function valido(e) {
+                tecla = (document.all) ? e.keyCode : e.which;
+
+                //Tecla de retroceso para borrar, siempre la permite
+                if (tecla == 8) {
+                    return true;
+                }
+                //Tecla de retroceso para espacio, siempre la permite
+                if (tecla == 32) {
+                    return true;
+                }
+                // Patron de entrada, en este caso solo acepta letras
+                patron = /[a-z]/;
+                tecla_final = String.fromCharCode(tecla);
+                return patron.test(tecla_final);
+            }
+        </script>
+        <script src="js/jquery.js"></script>
+
+        <script src="js/bootstrap.min.js"></script>
+
+        <span class="boton-top fa fa-arrow-up "></span>
+
+        <script type="text/javascript">
+            $('.boton-top').click(function () {
+                $('body,html').animate({scrollTop: 0}, 500);
+                return false;
+            });
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 0) {
+                    $('.boton-top').fadeIn();
+                } else {
+                    $('.boton-top').fadeOut();
+                }
+            });
+        </script>
+
+    </body>
+</html>
+

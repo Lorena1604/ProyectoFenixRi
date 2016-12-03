@@ -1,20 +1,20 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
-    <h:head>
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <head>
 
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="description" content=""/>
         <meta name="author" content=""/>
 
-        <title>Instructor | Nueva Ficha</title>
+        <title>Instructor | Registrar evolución</title>
         <link rel="stylesheet" href="../../css/font-awesome.min.css"/>
         <link rel="stylesheet" href="../../css/formValidation.min.css"/>
-        <link rel="stylesheet" href="../../css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="../../css/bootstrap.css"/>
         <link rel="stylesheet" href="../css/sweetalert.css"/>
         <link rel="stylesheet" href="../css/fileinput.css"/>
 
@@ -29,9 +29,9 @@
         <script src="../js/fileinput.js"></script>
 
 
-    </h:head>
+    </head>
 
-    <h:body class="fondoRoles">
+    <body class="fondoRoles">
         <div class="container-fluid display-table">
             <div class="row display-table-row">
 
@@ -39,9 +39,10 @@
 
                     <div class="row">
                         <ol class="breadcrumb">
+
                             <li><a href="inicio.xhtml">Inicio</a></li>
                             <li><a href="fichas.xhtml">Fichas</a></li>
-                            <li class="active">Nueva ficha</li>
+                            <li class="active">Registrar evolución</li>
                         </ol>
                         <header>
                             <div class="col-md-7">
@@ -168,7 +169,7 @@
                                                     <div class="navbar-content">
                                                         <span>José Alvaro Castiblanco Castaño</span>
                                                         <p>
-                                                            Cinturón : Negro Tercer Dan 
+                                                            Cinturón : Negro Tercer Dan
                                                         </p>
                                                         <div class="divider">
                                                         </div>
@@ -184,99 +185,153 @@
                         </header>
                     </div>
 
-                    <div class="row">
-
-                        <div class="nueva col-md-12 col-sm-12 col-xs-12">
+                    <div class="row">                                                   
+                        <div class="col-md-7 col-sm-12 col-xs-12">
                             <div class="sales">
-                                <f:view>
-                                    <center>  <h3>Nueva Ficha</h3>
-                                        <p>Todos los campos con (*) son obligatorios</p>
-                                        <p>Ingrese los siguientes datos del nuevo estudiante: </p>
-                                        <h:form>
-                                            <h1><h:outputText value="Registrar usuario"/></h1>
-                                            <p:panelGrid columns="4">
+                                <form class="evoluciones" id="formEvolucion" method="post">
+                                    <h3>Evolución</h3>
+                                    <p>Todos los campos con (*) son obligatorios</p>
+                                    <p>Para registrar la nueva evolución ingrese los siguientes datos del estudiante: </p>
 
-                                                <p:outputLabel value="Identificacion:" for="identificacion" />
-                                                <p:inputText id="identificacion" value="#{usuarioControlador.usuario.identificacion}" title="Identificacion" required="true" requiredMessage="The Identificacion field is required."/>
-                                                <p:outputLabel value="Tipo de documento:" for="tipoDocumento" />
-                                                <h:selectOneMenu id="tipoDocumento" value="#{usuarioControlador.usuario.tipoDocumento}" required="true" requiredMessage="The TipoDocumento field is required."
-                                                                 converter="documentoConvert">
-                                                    <f:selectItems value="#{usuarioControlador.tipoDocumento}" var="item"                                       
-                                                                   itemLabel="#{item.tipoDeDocumento}"
-                                                                   itemValue="#{item}"/> 
-                                                    <f:selectItems/>
-                                                </h:selectOneMenu>
-                                                <p:outputLabel value="Nombres:" for="nombres" />
-                                                <p:inputText id="nombres" value="#{usuarioControlador.usuario.nombres}" title="Nombres" required="true" requiredMessage="The Nombres field is required."/>
-                                                <p:outputLabel value="Apellidos:" for="apellidos" />
-                                                <p:inputText id="apellidos" value="#{usuarioControlador.usuario.apellidos}" title="Apellidos" required="true" requiredMessage="The Apellidos field is required."/>
-                                                <p:outputLabel value="Dirección:" for="direccion" />
-                                                <p:inputText id="direccion" value="#{usuarioControlador.usuario.direccion}" title="Direccion" required="true" requiredMessage="The Direccion field is required."/>
-                                                <p:outputLabel value="Correo electronico:" for="correoElectronico" />
-                                                <p:inputText id="correoElectronico" value="#{usuarioControlador.usuario.correoElectronico}" title="CorreoElectronico" required="true" requiredMessage="The CorreoElectronico field is required."/>
-                                                <p:outputLabel value="Contraseña:" for="contrasena" />
-                                                <p:password id="contrasena" value="#{usuarioControlador.usuario.contrasena}" title="Contrasena" required="true" requiredMessage="The Contrasena field is required."/>
-                                                <p:outputLabel value="Fecha de nacimiento:" for="fechaNacimiento" />
-                                                <p:calendar id="fechaNacimiento" value="#{usuarioControlador.usuario.fechaNacimiento}" placeholder="MM/DD/YYYY" title="FechaNacimiento" required="true" requiredMessage="The FechaNacimiento field is required.">
-                                                    <f:convertDateTime pattern="MM/dd/yyyy" />
-                                                </p:calendar>
+                                    <div class="col-md-6">
 
-                                                <p:outputLabel value="Estado:" for="estado" />
-                                                <h:selectOneMenu id="estado" value="#{usuarioControlador.usuario.estado}" required="true" requiredMessage="The Estado field is required."
-                                                                 converter="estadoConvertidor"
-                                                                 >
-                                                    <f:selectItems value="#{usuarioControlador.estado}" var="item" 
+                                        <div class="form-group">
+                                            <label class="control-label" for="idEstidiante">Identificación:</label>
+                                            <input type="number" class="form-control" id="idEstidiante" name="idEstidiante" required=""/>
+                                            <span class="help-block"></span>
+                                        </div>
 
-                                                                   itemLabel="#{item.estado}"
-                                                                   itemValue="#{item}"/> 
-                                                    <f:selectItems/>
-                                                </h:selectOneMenu>
-                                                <p:outputLabel value="Localidad:" for="idLocalidad" />
-                                                <h:selectOneMenu id="idLocalidad" value="#{usuarioControlador.usuario.idLocalidad}" required="true" requiredMessage="The IdLocalidad field is required."
-                                                                 converter="localidadConvertidor">
+                                        <div class="form-group">
+                                            <label class="control-label" for="nombreEstudiante">Nombre:</label>
+                                            <input type="text" class="form-control" id="nombreEstudiante" name="nombreEstudiante" required=""/>
+                                            <span class="help-block"></span>
+                                        </div>
 
-                                                    <f:selectItems value="#{usuarioControlador.localidad}" var="localidades"
-                                                                   itemLabel="#{localidades.descripcion}"
-                                                                   itemValue="#{localidades}"
-                                                                   />
-                                                </h:selectOneMenu>
+                                        <div class="form-group">
+                                            <label class="control-label" for="fechaDeEvolucion">Fecha de evolución:</label>
+                                            <input type="date" class="form-control" id="fechaDeEvolucion" name="fechaDeEvolucion" required=""/>
+                                            <span class="help-block"></span>
+                                        </div>
 
-                                            </p:panelGrid>
-                                            <br/>
-                                            <h:commandButton class="btn btn-info" id="boton" actionListener="#{usuarioControlador.crearUsuario()}" value="Registrar"></h:commandButton>
-                                            <h:button class="btn btn-danger" outcome="fichas" value="Cancelar"></h:button>
-                                                      
-                                        </h:form>
+                                        <div class="form-group">
+                                            <label class="control-label" for="estaturaEstudiante">Estatura:</label>
+                                            <input type="text" class="form-control" id="estaturaEstudiante" name="estaturaEstudiante" required=""/>
+                                            <span class="help-block"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label" for="pesoEstudiante">Peso:</label>
+                                            <input type="text" class="form-control" id="pesoEstudiante" name="pesoEstudiante" required=""/>
+                                            <span class="help-block"></span>
+                                        </div>
 
-                                        <br/>
-                                    </center>
-                                </f:view>
+                                        <div class="form-group">
+                                            <label class="control-label" for="tipoDeIdentificacion">Rendimiento:</label>
 
+                                            <select name="cinturones" class="selectpicker" required="">
+                                                <option value="1">Excelente</option>
+                                                <option value="2">Bueno</option>
+                                                <option value="3">Malo</option>
+                                            </select>
+                                            <span class="help-block"></span>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label" for="tipoDeIdentificacion">Cinturon nuevo:</label>
+
+                                            <select name="cinturones" class="selectpicker" required="">
+                                                <option value="1">Cabuya</option>
+                                                <option value="2">Blanco</option>
+                                                <option value="3">Blanco franja amarilla</option>
+                                                <option value="4">Amarillo</option>
+                                                <option value="5">Amarillo franja verde</option>
+                                                <option value="6">Verde</option>
+                                                <option value="7">Verde franja azul</option>
+                                                <option value="8">Azul</option>
+                                                <option value="9">Azul franja violeta</option>
+                                                <option value="9">Violeta</option>
+                                                <option value="10">Violeta franja rojo</option>
+                                                <option value="11">Rojo</option>
+                                                <option value="12">Rojo franja negro</option>
+                                                <option value="13">Negro </option>
+                                                <option value="14">Negro primer dan</option>
+                                                <option value="15">Negro segundo dan</option>
+                                                <option value="16">Negro tercer dan</option>
+                                                <option value="17">Negro cuarto dan</option>
+                                                <option value="18">Negro quinto dan</option>
+                                                <option value="19">Negro sexto dan</option>
+                                                <option value="20">Negro septimo dan</option>
+                                                <option value="21">Negro octavo dan</option>
+                                                <option value="22">Negro noveno dan</option>
+                                                <option value="23">Negro decimo dan</option>
+                                            </select>
+                                            <span></span>
+                                            <hr/>
+                                        </div>
+                                        <div class="form-group">
+                                            <button class="btn-warning btn-lg botonFichas" role="button">Registrar</button>
+                                            <button class="btn-danger btn-lg botonFichas" onclick="location = 'fichas.html'" role="button">Cancelar</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
+
+                        </div>
+                        <div class="col-md-5">
+                            <div class="sales">
+                                <img src="../imagenes/taekwondo-(2).png" style="width:340px; "/>
+                            </div>
+
                         </div>
                     </div>
+                    <hr/>
                 </div>
-            </div>
-        </div>
+            </div> 
+        </div>                   
+
+
         <script src="../js/sweetalert.min.js"></script>
         <script src="js/validar.js"></script>
+
         <span class="boton-top fa fa-arrow-up"></span>
 
         <script type="text/javascript">
-                                        $('.boton-top').click(function () {
-                                            $('body,html').animate({scrollTop: 0}, 500);
-                                            return false;
-                                        });
-                                        $(window).scroll(function () {
-                                            if ($(this).scrollTop() > 0) {
-                                                $('.boton-top').fadeIn();
-                                            } else {
-                                                $('.boton-top').fadeOut();
-                                            }
-                                        });
+                                                $('.boton-top').click(function () {
+                                                    $('body,html').animate({scrollTop: 0}, 500);
+                                                    return false;
+                                                });
+                                                $(window).scroll(function () {
+                                                    if ($(this).scrollTop() > 0) {
+                                                        $('.boton-top').fadeIn();
+                                                    } else {
+                                                        $('.boton-top').fadeOut();
+                                                    }
+                                                });
         </script> 
 
+        <script  type="text/javascript" >
+            $(document).ready(function () {
+                $('[data-toggle="offcanvas"]').click(function () {
+                    $("#navigation").toggleClass("hidden-xs");
+                });
+            });
+        </script>
 
-    </h:body>
+        <script>
+
+            $(document).ready(function () {
+                $('#btnValidar').click(function validar() {
+
+                    swal("Here's a message!", "It's pretty, isn't it?")
+
+                });
+            });
+        </script>
+
+
+
+
+    </body>
 
 </html>
