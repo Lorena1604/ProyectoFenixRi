@@ -296,16 +296,16 @@ BOTONES PORTADA INSTRUCTOR-----
 
 }
 .nueva{ 
-    width:95%;
+    width:90%;
     margin-bottom:5%;
     padding-left:6%;
     padding-right:6%;
 }
 
-.nueva .sales form h3{
-    font-size:23px;
-    text-align: center;
-    font-weight: 700;
+.formularioNuevaFicha{
+   
+    font-size: 16px;
+    font-family:"Footlight MT Light";
 }
 .nueva .sales{
     font-size:20px;
