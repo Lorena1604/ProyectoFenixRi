@@ -5,7 +5,6 @@
  */
 package co.edu.fenixri.frontend.controladores;
 
-
 import co.edu.fenixri.backend.entidades.Estado;
 import co.edu.fenixri.backend.entidades.Localidad;
 import co.edu.fenixri.backend.entidades.Telefono;
@@ -21,6 +20,10 @@ import javax.faces.bean.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -40,13 +43,13 @@ public class UsuarioControlador {
     private EstadoFacadeLocal estadoFacade;
     @EJB
     private LocalidadFacadeLocal localidadFacade;
-    
+
     private Usuario usuario;
     private Telefono telefono;
     private List<TipoDocumento> tipoDocumento;
     private List<Estado> estado;
     private List<Localidad> localidad;
-    
+
     public UsuarioControlador() {
     }
 
@@ -83,7 +86,7 @@ public class UsuarioControlador {
     public void setEstado(List<Estado> estado) {
         this.estado = estado;
     }
-    
+
     public List<Localidad> getLocalidad() {
         return localidadFacade.findAll();
     }
@@ -91,23 +94,58 @@ public class UsuarioControlador {
     public void setLocalidad(List<Localidad> localidad) {
         this.localidad = localidad;
     }
-    
-    
+
     @PostConstruct
-    public void init(){
+    public void init() {
         usuario = new Usuario();
         telefono = new Telefono();
-        
+
     }
-    public String crearUsuario(){
+
+    private static EntityManager getEntityManager() {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("CRUDFenixPU");
+        EntityManager em = emf.createEntityManager();
+        return em;
+    }
+
+    public String crearUsuario() {
         String salida = "";
-        try{
-         usuarioFacade.create(usuario);
-        }catch(Exception e){
-          salida = "Error " + e.getMessage();
+        try {
+            EntityManager em = getEntityManager();
+            usuarioFacade.create(usuario);
+            telefonoFacade.create(telefono);
+
+            EntityTransaction etx = em.getTransaction();
+            etx.begin();
+            em.persist(usuario);
+            em.persist(telefono);
+            etx.commit();
+            em.close();
+
+        } catch (Exception e) {
+
+            salida = "Error " + e.getMessage();
         }
         return salida;
     }
+
+    /*EntityManagerFactory emf = Persistence.createEntityManagerFactory("CRUDFenixPU");
+    EntityManager em = emf.createEntityManager();
+
+    public String crearUsuario() {
+        String salida = "";
+        try {
+            em.getTransaction().begin();
+            usuarioFacade.create(usuario);
+            telefonoFacade.create(telefono);
+            em.persist(usuario);
+
+        } catch (Exception e) {
+            em.getTransaction().commit();
+            salida = "Error " + e.getMessage();
+        }
+        return salida;
+    }*/
     public void registrarUsuario() {
         usuarioFacade.create(usuario);
     }
@@ -120,16 +158,15 @@ public class UsuarioControlador {
         usuarioFacade.remove(r);
 
     }
-    
-    public String modificar(Usuario item)
-    {
+
+    public String modificar(Usuario item) {
         this.usuario = item;
         return "modificarUsuario";
     }
-    
-    public void modificarUsuario(){
-        
+
+    public void modificarUsuario() {
+
         usuarioFacade.edit(usuario);
-        
+
     }
 }
