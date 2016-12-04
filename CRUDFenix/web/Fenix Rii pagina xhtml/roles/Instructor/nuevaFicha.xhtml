@@ -220,7 +220,9 @@
                                                 <p:calendar id="fechaNacimiento" value="#{usuarioControlador.usuario.fechaNacimiento}" placeholder="MM/DD/YYYY" title="FechaNacimiento" required="true" requiredMessage="The FechaNacimiento field is required.">
                                                     <f:convertDateTime pattern="MM/dd/yyyy" />
                                                 </p:calendar>
-
+                                                 <p:outputLabel value="Numero:" for="numero" />
+                                                 <p:inputText id="numero" value="#{usuarioControlador.telefono.numero}" title="Numero" required="true" requiredMessage="The Numero field is required."/>
+                                                   
                                                 <p:outputLabel value="Estado:" for="estado" />
                                                 <h:selectOneMenu id="estado" value="#{usuarioControlador.usuario.estado}" required="true" requiredMessage="The Estado field is required."
                                                                  converter="estadoConvertidor"

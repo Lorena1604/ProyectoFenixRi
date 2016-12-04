@@ -110,20 +110,20 @@ public class UsuarioControlador {
 
     public String crearUsuario() {
         String salida = "";
+        EntityManager em = getEntityManager();
+        EntityTransaction etx = em.getTransaction();
         try {
-            EntityManager em = getEntityManager();
-            usuarioFacade.create(usuario);
-            telefonoFacade.create(telefono);
-
-            EntityTransaction etx = em.getTransaction();
             etx.begin();
+            usuarioFacade.create(usuario);
             em.persist(usuario);
+            em.flush();
+            telefonoFacade.create(telefono);
             em.persist(telefono);
             etx.commit();
             em.close();
 
         } catch (Exception e) {
-
+            etx.rollback();
             salida = "Error " + e.getMessage();
         }
         return salida;
