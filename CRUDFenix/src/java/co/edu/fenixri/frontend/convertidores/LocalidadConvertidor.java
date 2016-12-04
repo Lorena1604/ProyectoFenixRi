@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.fenixri.backend.convertidores;
+package co.edu.fenixri.frontend.convertidores;
 
-import co.edu.fenixri.backend.entidades.Estado;
-import co.edu.fenixri.backend.facade.EstadoFacadeLocal;
+
+import co.edu.fenixri.backend.entidades.Localidad;
+import co.edu.fenixri.backend.facade.LocalidadFacadeLocal;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.SessionScoped;
@@ -15,21 +16,21 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-@FacesConverter(value = "estadoConvertidor")
+@FacesConverter(value = "localidadConvertidor")
 @SessionScoped
-public class EstadoConvertidor implements Converter{
+public class LocalidadConvertidor implements Converter{
 
    
-    public EstadoConvertidor() {
+    public LocalidadConvertidor() {
     }
     @EJB
-    private EstadoFacadeLocal estadoFacade;
+    private LocalidadFacadeLocal localidadFacade;
     
     @Override
     public Object getAsObject(FacesContext contexto, UIComponent componente, String valor) {
-        List<Estado> estados = this.estadoFacade.findAll();
-        for (Estado objeto : estados) {
-            if (objeto.getIdEstado() == Integer.parseInt(valor)) {
+        List<Localidad> localidades = this.localidadFacade.findAll();
+        for (Localidad objeto : localidades) {
+            if (objeto.getIdLocalidad()== Integer.parseInt(valor)) {
                 return objeto;
             }
         }
@@ -39,7 +40,7 @@ public class EstadoConvertidor implements Converter{
     @Override
     public String getAsString(FacesContext contexto, UIComponent componente, Object objeto) {
         if (objeto != null) {
-            return ((Estado) objeto).getIdEstado().toString();
+            return ((Localidad) objeto).getIdLocalidad().toString();
         } else {
             return "";
         }

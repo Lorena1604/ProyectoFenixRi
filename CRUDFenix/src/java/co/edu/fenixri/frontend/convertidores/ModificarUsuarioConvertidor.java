@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.fenixri.backend.convertidores;
+package co.edu.fenixri.frontend.convertidores;
 
-
-import co.edu.fenixri.backend.entidades.Localidad;
-import co.edu.fenixri.backend.facade.LocalidadFacadeLocal;
+import co.edu.fenixri.backend.entidades.Estado;
+import co.edu.fenixri.backend.entidades.Usuario;
+import co.edu.fenixri.backend.facade.EstadoFacadeLocal;
+import co.edu.fenixri.backend.facade.UsuarioFacadeLocal;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.SessionScoped;
@@ -16,21 +17,21 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-@FacesConverter(value = "localidadConvertidor")
+@FacesConverter(value = "modificarUsuarioConvertidor")
 @SessionScoped
-public class LocalidadConvertidor implements Converter{
+public class ModificarUsuarioConvertidor implements Converter{
 
    
-    public LocalidadConvertidor() {
+    public ModificarUsuarioConvertidor() {
     }
     @EJB
-    private LocalidadFacadeLocal localidadFacade;
+    private UsuarioFacadeLocal usuarioFacade;
     
     @Override
     public Object getAsObject(FacesContext contexto, UIComponent componente, String valor) {
-        List<Localidad> localidades = this.localidadFacade.findAll();
-        for (Localidad objeto : localidades) {
-            if (objeto.getIdLocalidad()== Integer.parseInt(valor)) {
+        List<Usuario> usuarios = this.usuarioFacade.findAll();
+        for (Usuario objeto : usuarios) {
+            if (objeto.getIdUsuario()== Integer.parseInt(valor)) {
                 return objeto;
             }
         }
@@ -40,7 +41,7 @@ public class LocalidadConvertidor implements Converter{
     @Override
     public String getAsString(FacesContext contexto, UIComponent componente, Object objeto) {
         if (objeto != null) {
-            return ((Localidad) objeto).getIdLocalidad().toString();
+            return ((Usuario) objeto).getIdUsuario().toString();
         } else {
             return "";
         }

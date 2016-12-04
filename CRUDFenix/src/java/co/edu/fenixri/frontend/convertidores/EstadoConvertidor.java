@@ -3,12 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.fenixri.backend.convertidores;
+package co.edu.fenixri.frontend.convertidores;
 
 import co.edu.fenixri.backend.entidades.Estado;
-import co.edu.fenixri.backend.entidades.Usuario;
 import co.edu.fenixri.backend.facade.EstadoFacadeLocal;
-import co.edu.fenixri.backend.facade.UsuarioFacadeLocal;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.SessionScoped;
@@ -17,21 +15,21 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-@FacesConverter(value = "modificarUsuarioConvertidor")
+@FacesConverter(value = "estadoConvertidor")
 @SessionScoped
-public class ModificarUsuarioConvertidor implements Converter{
+public class EstadoConvertidor implements Converter{
 
    
-    public ModificarUsuarioConvertidor() {
+    public EstadoConvertidor() {
     }
     @EJB
-    private UsuarioFacadeLocal usuarioFacade;
+    private EstadoFacadeLocal estadoFacade;
     
     @Override
     public Object getAsObject(FacesContext contexto, UIComponent componente, String valor) {
-        List<Usuario> usuarios = this.usuarioFacade.findAll();
-        for (Usuario objeto : usuarios) {
-            if (objeto.getIdUsuario()== Integer.parseInt(valor)) {
+        List<Estado> estados = this.estadoFacade.findAll();
+        for (Estado objeto : estados) {
+            if (objeto.getIdEstado() == Integer.parseInt(valor)) {
                 return objeto;
             }
         }
@@ -41,7 +39,7 @@ public class ModificarUsuarioConvertidor implements Converter{
     @Override
     public String getAsString(FacesContext contexto, UIComponent componente, Object objeto) {
         if (objeto != null) {
-            return ((Usuario) objeto).getIdUsuario().toString();
+            return ((Estado) objeto).getIdEstado().toString();
         } else {
             return "";
         }

@@ -3,12 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.fenixri.backend.convertidores;
+package co.edu.fenixri.frontend.convertidores;
 
-
-import co.edu.fenixri.backend.entidades.TipoActividad;
-import co.edu.fenixri.backend.facade.TipoActividadFacadeLocal;
-
+import co.edu.fenixri.backend.entidades.TipoDocumento;
+import co.edu.fenixri.backend.facade.TipoDocumentoFacadeLocal;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.SessionScoped;
@@ -19,24 +17,25 @@ import javax.faces.convert.FacesConverter;
 
 /**
  *
- * @author morales
+ * @author SENA
  */
-@FacesConverter(value = "actividadConvert")
+@FacesConverter(value = "documentoConvert")
 @SessionScoped
-public class ActividadConvert implements Converter {
+public class DocumentoConvert implements Converter{
 
     /**
-     * Creates a new instance of ActividadConvert
+     * Creates a new instance of DocumentoConvert
      */
     @EJB
-    private TipoActividadFacadeLocal actividadFacade;
-    public ActividadConvert() {
+    private TipoDocumentoFacadeLocal documentoFacade;
+    public DocumentoConvert() {
     }
+    
     @Override
     public Object getAsObject(FacesContext contexto, UIComponent componente, String valor) {
-        List<TipoActividad> tipos = this.actividadFacade.findAll();
-        for (TipoActividad objeto : tipos) {
-            if (objeto.getIdtipoActividad() == Integer.parseInt(valor)) {
+        List<TipoDocumento> tipos = this.documentoFacade.findAll();
+        for (TipoDocumento objeto : tipos) {
+            if (objeto.getIdtipoDocumentos() == Integer.parseInt(valor)) {
                 return objeto;
             }
         }
@@ -46,11 +45,10 @@ public class ActividadConvert implements Converter {
     @Override
     public String getAsString(FacesContext contexto, UIComponent componente, Object objeto) {
         if (objeto != null) {
-            return ((TipoActividad) objeto).getIdtipoActividad().toString();
+            return ((TipoDocumento) objeto).getIdtipoDocumentos().toString();
         } else {
             return "";
         }
     }
 
-    
 }

@@ -193,7 +193,6 @@
                                         <p>Todos los campos con (*) son obligatorios</p>
                                         <p>Ingrese los siguientes datos del nuevo estudiante: </p>
                                         <h:form class="formularioNuevaFicha">
-                                            <h1><h:outputText value="Registrar usuario"/></h1>
                                             <p:panelGrid columns="4">
 
                                                 <p:outputLabel value="Identificacion:" for="identificacion" />
@@ -245,7 +244,9 @@
 
                                             </p:panelGrid>
                                             <br/>
-                                            <h:commandButton class="btn btn-info" id="boton" actionListener="#{usuarioControlador.crearUsuario()}" value="Registrar"></h:commandButton>
+                                            <h:commandButton class="btn btn-info" id="botonCrearUsuario" actionListener="#{usuarioControlador.crearUsuario()}" value="Registrar">
+                                                <h:message for="botonCrearUsuario"></h:message>
+                                            </h:commandButton>
                                             <h:button class="btn btn-danger" outcome="fichas" value="Cancelar"></h:button>
                                                       
                                         </h:form>

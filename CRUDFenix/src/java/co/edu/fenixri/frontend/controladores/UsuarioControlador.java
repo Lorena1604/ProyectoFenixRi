@@ -24,6 +24,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 
 /**
  *
@@ -43,6 +44,9 @@ public class UsuarioControlador {
     private EstadoFacadeLocal estadoFacade;
     @EJB
     private LocalidadFacadeLocal localidadFacade;
+    
+    @PersistenceContext
+    EntityManager em;
 
     private Usuario usuario;
     private Telefono telefono;
@@ -110,20 +114,13 @@ public class UsuarioControlador {
 
     public String crearUsuario() {
         String salida = "";
-        EntityManager em = getEntityManager();
-        EntityTransaction etx = em.getTransaction();
         try {
-            etx.begin();
             usuarioFacade.create(usuario);
             em.persist(usuario);
-            em.flush();
             telefonoFacade.create(telefono);
             em.persist(telefono);
-            etx.commit();
-            em.close();
 
         } catch (Exception e) {
-            etx.rollback();
             salida = "Error " + e.getMessage();
         }
         return salida;

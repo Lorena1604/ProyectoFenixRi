@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.fenixri.backend.convertidores;
+package co.edu.fenixri.frontend.convertidores;
 
-import co.edu.fenixri.backend.entidades.TipoDocumento;
-import co.edu.fenixri.backend.facade.TipoDocumentoFacadeLocal;
+
+import co.edu.fenixri.backend.entidades.TipoActividad;
+import co.edu.fenixri.backend.facade.TipoActividadFacadeLocal;
+
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.SessionScoped;
@@ -17,25 +19,24 @@ import javax.faces.convert.FacesConverter;
 
 /**
  *
- * @author SENA
+ * @author morales
  */
-@FacesConverter(value = "documentoConvert")
+@FacesConverter(value = "actividadConvert")
 @SessionScoped
-public class DocumentoConvert implements Converter{
+public class ActividadConvert implements Converter {
 
     /**
-     * Creates a new instance of DocumentoConvert
+     * Creates a new instance of ActividadConvert
      */
     @EJB
-    private TipoDocumentoFacadeLocal documentoFacade;
-    public DocumentoConvert() {
+    private TipoActividadFacadeLocal actividadFacade;
+    public ActividadConvert() {
     }
-    
     @Override
     public Object getAsObject(FacesContext contexto, UIComponent componente, String valor) {
-        List<TipoDocumento> tipos = this.documentoFacade.findAll();
-        for (TipoDocumento objeto : tipos) {
-            if (objeto.getIdtipoDocumentos() == Integer.parseInt(valor)) {
+        List<TipoActividad> tipos = this.actividadFacade.findAll();
+        for (TipoActividad objeto : tipos) {
+            if (objeto.getIdtipoActividad() == Integer.parseInt(valor)) {
                 return objeto;
             }
         }
@@ -45,10 +46,11 @@ public class DocumentoConvert implements Converter{
     @Override
     public String getAsString(FacesContext contexto, UIComponent componente, Object objeto) {
         if (objeto != null) {
-            return ((TipoDocumento) objeto).getIdtipoDocumentos().toString();
+            return ((TipoActividad) objeto).getIdtipoActividad().toString();
         } else {
             return "";
         }
     }
 
+    
 }
