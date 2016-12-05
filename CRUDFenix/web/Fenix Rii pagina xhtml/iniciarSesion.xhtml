@@ -187,31 +187,6 @@
 
         <script src="js/bootstrap.min.js"></script>
 
-
-        \\CODIGO TEXTO SOLO NUMEROS\\
-        <script>
-                                        function valida(e) {
-                                            tecla = (document.all) ? e.keyCode : e.which;
-
-                                            //Tecla de retroceso para borrar, siempre la permite
-                                            if (tecla == 8) {
-                                                return true;
-                                            }
-
-                                            // Patron de entrada, en este caso solo acepta numeros
-                                            patron = /[0-9]/;
-                                            tecla_final = String.fromCharCode(tecla);
-                                            return patron.test(tecla_final);
-                                        }
-        </script>
-
-        <script language="Javascript">
-            <!-- Begin 
-            document.oncontextmenu = function () {
-                return false
-            }
-            // End --> 
-        </script>
         <span class="boton-top fa fa-arrow-up "></span>
 
         <script type="text/javascript">

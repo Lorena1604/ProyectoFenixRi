@@ -199,11 +199,13 @@
                                                 <p:inputText id="identificacion" value="#{usuarioControlador.usuario.identificacion}" title="Identificacion" required="true" requiredMessage="The Identificacion field is required."/>
                                                 <p:outputLabel value="Tipo de documento:" for="tipoDocumento" />
                                                 <h:selectOneMenu id="tipoDocumento" value="#{usuarioControlador.usuario.tipoDocumento}" required="true" requiredMessage="The TipoDocumento field is required."
-                                                                 converter="documentoConvert">
-                                                    <f:selectItems value="#{usuarioControlador.tipoDocumento}" var="item"                                       
+                                                                 converter="documentoConvert" >
+
+                                                    <f:selectItems value="#{usuarioControlador.tipoDocumento}" var="item" 
                                                                    itemLabel="#{item.tipoDeDocumento}"
-                                                                   itemValue="#{item}"/> 
-                                                    <f:selectItems/>
+                                                                   itemValue="#{item}"> 
+
+                                                    </f:selectItems>
                                                 </h:selectOneMenu>
                                                 <p:outputLabel value="Nombres:" for="nombres" />
                                                 <p:inputText id="nombres" value="#{usuarioControlador.usuario.nombres}" title="Nombres" required="true" requiredMessage="The Nombres field is required."/>
@@ -219,9 +221,9 @@
                                                 <p:calendar id="fechaNacimiento" value="#{usuarioControlador.usuario.fechaNacimiento}" placeholder="MM/DD/YYYY" title="FechaNacimiento" required="true" requiredMessage="The FechaNacimiento field is required.">
                                                     <f:convertDateTime pattern="MM/dd/yyyy" />
                                                 </p:calendar>
-                                                 <p:outputLabel value="Numero:" for="numero" />
-                                                 <p:inputText id="numero" value="#{usuarioControlador.telefono.numero}" title="Numero" required="true" requiredMessage="The Numero field is required."/>
-                                                   
+                                                <p:outputLabel value="Numero:" for="numero" />
+                                                <p:inputText id="numero" value="#{usuarioControlador.telefono.numero}" title="Numero" required="true" requiredMessage="The Numero field is required."/>
+
                                                 <p:outputLabel value="Estado:" for="estado" />
                                                 <h:selectOneMenu id="estado" value="#{usuarioControlador.usuario.estado}" required="true" requiredMessage="The Estado field is required."
                                                                  converter="estadoConvertidor"
@@ -248,7 +250,7 @@
                                                 <h:message for="botonCrearUsuario"></h:message>
                                             </h:commandButton>
                                             <h:button class="btn btn-danger" outcome="fichas" value="Cancelar"></h:button>
-                                                      
+
                                         </h:form>
 
                                         <br/>
@@ -266,17 +268,17 @@
         <span class="boton-top fa fa-arrow-up"></span>
 
         <script type="text/javascript">
-                                        $('.boton-top').click(function () {
-                                            $('body,html').animate({scrollTop: 0}, 500);
-                                            return false;
-                                        });
-                                        $(window).scroll(function () {
-                                            if ($(this).scrollTop() > 0) {
-                                                $('.boton-top').fadeIn();
-                                            } else {
-                                                $('.boton-top').fadeOut();
-                                            }
-                                        });
+            $('.boton-top').click(function () {
+                $('body,html').animate({scrollTop: 0}, 500);
+                return false;
+            });
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 0) {
+                    $('.boton-top').fadeIn();
+                } else {
+                    $('.boton-top').fadeOut();
+                }
+            });
         </script> 
 
 
