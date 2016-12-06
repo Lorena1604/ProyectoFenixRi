@@ -15,6 +15,7 @@ import co.edu.fenixri.backend.facade.LocalidadFacadeLocal;
 import co.edu.fenixri.backend.facade.TelefonoFacadeLocal;
 import co.edu.fenixri.backend.facade.TipoDocumentoFacadeLocal;
 import co.edu.fenixri.backend.facade.UsuarioFacadeLocal;
+import co.edu.fenixri.backend.negocio.SessionBeanLogin;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.annotation.PostConstruct;
@@ -44,7 +45,7 @@ public class UsuarioControlador {
     private EstadoFacadeLocal estadoFacade;
     @EJB
     private LocalidadFacadeLocal localidadFacade;
-    
+
     @PersistenceContext
     EntityManager em;
 
@@ -162,8 +163,22 @@ public class UsuarioControlador {
     }
 
     public void modificarUsuario() {
-
         usuarioFacade.edit(usuario);
+    }
+    
+    SessionBeanLogin sessionBeanLogin;
+    
+    public String iniciarSesion(int nCedula, String password) {
+        if (sessionBeanLogin.validarUsuario(nCedula, password)) {
+            return "page/home?faces.redirect=true";
+        } else {
+            return "index";
+        }
+    }
+
+    public String invalidarSesion() {
+        sessionBeanLogin.cerrarSesion();
+        return "index";
 
     }
 }
