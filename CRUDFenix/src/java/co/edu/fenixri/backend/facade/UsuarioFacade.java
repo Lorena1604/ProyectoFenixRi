@@ -6,6 +6,7 @@
 package co.edu.fenixri.backend.facade;
 
 import co.edu.fenixri.backend.entidades.Usuario;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -29,14 +30,22 @@ public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFac
     public UsuarioFacade() {
         super(Usuario.class);
     }
-    
-    public Usuario autenticarUsuario(int idUsuarioRegistrado, String password){
+
+    @Override
+    public Usuario autenticarUsuario(int idUsuarioRegistrado, String password) {
         Usuario usuario = null;
-        
+
         Query consulta = em.createNamedQuery("SELECT u.identificacion, u.nombres, u.apellidos from usuarios u where identificacion=? and contrasena=?");
         consulta.setParameter(1, idUsuarioRegistrado);
         consulta.setParameter(2, password);
-        return usuario;
+        consulta.getResultList();
+        List<Usuario> resultado = consulta.getResultList();
+        if (resultado != null) {
+            return resultado.get(0);
+        } else {
+            return usuario;
+        }
     }
-    
+
+
 }
