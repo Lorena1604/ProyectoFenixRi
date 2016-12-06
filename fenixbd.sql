@@ -599,7 +599,7 @@ CREATE TABLE `usuarios` (
   `idLocalidad` int(11) NOT NULL,
   `direccion` varchar(40) NOT NULL,
   `correoElectronico` varchar(35) NOT NULL,
-  `contrasena` varchar(45) NOT NULL,
+  `contrasena` varchar(45) DEFAULT NULL,
   `fechaNacimiento` date NOT NULL,
   `estado` int(11) NOT NULL,
   PRIMARY KEY (`idUsuario`),
@@ -612,7 +612,7 @@ CREATE TABLE `usuarios` (
   CONSTRAINT `usuarioEstado` FOREIGN KEY (`estado`) REFERENCES `estados` (`idEstado`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `usuarioLocalidad` FOREIGN KEY (`idLocalidad`) REFERENCES `localidades` (`idLocalidad`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `usuarioTipoDocumento` FOREIGN KEY (`tipoDocumento`) REFERENCES `tipodocumentos` (`idtipoDocumentos`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=1019114352 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1019114353 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -653,6 +653,30 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `crearContrasena` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `crearContrasena`(in identificacion int)
+BEGIN
+
+DECLARE contra VARCHAR(45);
+
+SET contra = identificacion;
+
+INSERT INTO usuarios(contrasena) values(guardarContraseña(contra));
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -663,4 +687,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-12-04 22:12:42
+-- Dump completed on 2016-12-05 19:50:47

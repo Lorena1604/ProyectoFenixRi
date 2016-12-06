@@ -9,6 +9,7 @@ import co.edu.fenixri.backend.entidades.Usuario;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,6 +28,15 @@ public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFac
 
     public UsuarioFacade() {
         super(Usuario.class);
+    }
+    
+    public Usuario autenticarUsuario(int idUsuarioRegistrado, String password){
+        Usuario usuario = null;
+        
+        Query consulta = em.createNamedQuery("SELECT u.identificacion, u.nombres, u.apellidos from usuarios u where identificacion=? and contrasena=?");
+        consulta.setParameter(1, idUsuarioRegistrado);
+        consulta.setParameter(2, password);
+        return usuario;
     }
     
 }

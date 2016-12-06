@@ -7,9 +7,7 @@ package co.edu.fenixri.backend.entidades;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -17,20 +15,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -81,38 +74,22 @@ public class Usuario implements Serializable {
     @Size(min = 1, max = 35)
     @Column(name = "correoElectronico")
     private String correoElectronico;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
+    @Size(max = 45)
     @Column(name = "contrasena")
     private String contrasena;
     @Basic(optional = false)
-    @NotNull
     @Column(name = "fechaNacimiento")
     @Temporal(TemporalType.DATE)
     private Date fechaNacimiento;
-    @JoinTable(name = "rolesusuario", joinColumns = {
-        @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario")}, inverseJoinColumns = {
-        @JoinColumn(name = "rol", referencedColumnName = "idRol")})
-    @ManyToMany(fetch = FetchType.LAZY)
-    private List<Rol> rolList;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.LAZY)
-    private Instructor instructor;
     @JoinColumn(name = "estado", referencedColumnName = "idEstado")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Estado estado;
     @JoinColumn(name = "idLocalidad", referencedColumnName = "idLocalidad")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Localidad idLocalidad;
     @JoinColumn(name = "tipoDocumento", referencedColumnName = "idtipoDocumentos")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private TipoDocumento tipoDocumento;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEstudiante", fetch = FetchType.LAZY)
-    private List<PagoEstudiante> pagoEstudianteList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.LAZY)
-    private List<Telefono> telefonoList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.LAZY)
-    private List<Ficha> fichaList;
 
     public Usuario() {
     }
@@ -121,14 +98,13 @@ public class Usuario implements Serializable {
         this.idUsuario = idUsuario;
     }
 
-    public Usuario(Integer idUsuario, long identificacion, String nombres, String apellidos, String direccion, String correoElectronico, String contrasena, Date fechaNacimiento) {
+    public Usuario(Integer idUsuario, long identificacion, String nombres, String apellidos, String direccion, String correoElectronico, Date fechaNacimiento) {
         this.idUsuario = idUsuario;
         this.identificacion = identificacion;
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.direccion = direccion;
         this.correoElectronico = correoElectronico;
-        this.contrasena = contrasena;
         this.fechaNacimiento = fechaNacimiento;
     }
 
@@ -196,23 +172,6 @@ public class Usuario implements Serializable {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    @XmlTransient
-    public List<Rol> getRolList() {
-        return rolList;
-    }
-
-    public void setRolList(List<Rol> rolList) {
-        this.rolList = rolList;
-    }
-
-    public Instructor getInstructor() {
-        return instructor;
-    }
-
-    public void setInstructor(Instructor instructor) {
-        this.instructor = instructor;
-    }
-
     public Estado getEstado() {
         return estado;
     }
@@ -237,33 +196,6 @@ public class Usuario implements Serializable {
         this.tipoDocumento = tipoDocumento;
     }
 
-    @XmlTransient
-    public List<PagoEstudiante> getPagoEstudianteList() {
-        return pagoEstudianteList;
-    }
-
-    public void setPagoEstudianteList(List<PagoEstudiante> pagoEstudianteList) {
-        this.pagoEstudianteList = pagoEstudianteList;
-    }
-
-    @XmlTransient
-    public List<Telefono> getTelefonoList() {
-        return telefonoList;
-    }
-
-    public void setTelefonoList(List<Telefono> telefonoList) {
-        this.telefonoList = telefonoList;
-    }
-
-    @XmlTransient
-    public List<Ficha> getFichaList() {
-        return fichaList;
-    }
-
-    public void setFichaList(List<Ficha> fichaList) {
-        this.fichaList = fichaList;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -286,7 +218,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "co.edu.fenixri.backend.controladores.Usuario[ idUsuario=" + idUsuario + " ]";
+        return "co.edu.fenixri.backend.entidades.Usuario[ idUsuario=" + idUsuario + " ]";
     }
     
 }
