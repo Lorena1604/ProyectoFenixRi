@@ -21,7 +21,7 @@ import org.jboss.weld.context.http.HttpConversationContext;
  */
 @Stateless
 public class SessionBeanLogin {
-    
+    /*
      @Inject
     private UsuarioFacadeLocal usuarioFacadeLocal;
     private Usuario usuario;
@@ -50,6 +50,6 @@ public class SessionBeanLogin {
       public void cerrarSesion(){
         hsr.getSession().removeAttribute("userLogin");
         hsr.getSession().invalidate();
-    }
+    }*/
    
 }

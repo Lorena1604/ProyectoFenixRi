@@ -165,7 +165,7 @@ public class UsuarioControlador {
     public void modificarUsuario() {
         usuarioFacade.edit(usuario);
     }
-    
+    /*
     SessionBeanLogin sessionBeanLogin;
     
     public String iniciarSesion(int nCedula, String password) {
@@ -180,5 +180,5 @@ public class UsuarioControlador {
         sessionBeanLogin.cerrarSesion();
         return "index";
 
-    }
+    }*/
 }
