@@ -115,52 +115,18 @@ public class UsuarioControlador {
         return em;
     }
 
-    public String crearUsuario() {
-        String salida = "";
-        try {
-            usuarioFacade.create(usuario);
-            em.persist(usuario);
-            telefonoFacade.create(telefono);
-            em.persist(telefono);
-
-        } catch (Exception e) {
-            salida = "Error " + e.getMessage();
-        }
-        return salida;
-    }
-
-    /*EntityManagerFactory emf = Persistence.createEntityManagerFactory("CRUDFenixPU");
-    EntityManager em = emf.createEntityManager();
-
-    public String crearUsuario() {
-        String salida = "";
-        try {
-            em.getTransaction().begin();
-            usuarioFacade.create(usuario);
-            telefonoFacade.create(telefono);
-            em.persist(usuario);
-
-        } catch (Exception e) {
-            em.getTransaction().commit();
-            salida = "Error " + e.getMessage();
-        }
-        return salida;
-    }*/
-    public void registrarUsuario() {
-        usuarioFacade.create(usuario);
-    }
-    
-       
-    public String registrsrUsuario(){
+   
+    public String registrarUsuario(){
         String respuesta = null;
         try{
             
-          usuario.setTelefono(telefono);
+          telefono.setIdUsuario(usuario);
+          telefonoFacade.create(telefono);
           usuarioFacade.create(usuario);
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Aviso","Usuario registrado exitosamente"));
             respuesta = "index?Faces-redirect=true";
         }catch(Exception e){
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, respuesta));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error","Error al registrar el usuario"));
         }
         
         return respuesta;
@@ -184,20 +150,5 @@ public class UsuarioControlador {
     public void modificarUsuario() {
         usuarioFacade.edit(usuario);
     }
-    /*
-    SessionBeanLogin sessionBeanLogin;
-    
-    public String iniciarSesion(int nCedula, String password) {
-        if (sessionBeanLogin.validarUsuario(nCedula, password)) {
-            return "page/home?faces.redirect=true";
-        } else {
-            return "index";
-        }
-    }
-
-    public String invalidarSesion() {
-        sessionBeanLogin.cerrarSesion();
-        return "index";
-
-    }*/
+ 
 }
