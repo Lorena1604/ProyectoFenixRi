@@ -5,6 +5,7 @@
  */
 package co.edu.fenixri.backend.facade;
 
+import co.edu.fenixri.backend.entidades.Telefono;
 import co.edu.fenixri.backend.entidades.Usuario;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -22,6 +23,9 @@ public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFac
     @PersistenceContext(unitName = "CRUDFenixPU")
     private EntityManager em;
 
+    private Usuario usuario;
+    private Telefono tel;
+    
     @Override
     protected EntityManager getEntityManager() {
         return em;
@@ -46,6 +50,4 @@ public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFac
             return usuario;
         }
     }
-
-
 }

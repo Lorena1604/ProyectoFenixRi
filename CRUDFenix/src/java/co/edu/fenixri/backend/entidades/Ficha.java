@@ -44,6 +44,10 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Ficha.findByFechaIngreso", query = "SELECT f FROM Ficha f WHERE f.fechaIngreso = :fechaIngreso")})
 public class Ficha implements Serializable {
 
+    @Lob
+    @Column(name = "fotoUsuario")
+    private byte[] fotoUsuario;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -60,9 +64,6 @@ public class Ficha implements Serializable {
     @Column(name = "fechaIngreso")
     @Temporal(TemporalType.DATE)
     private Date fechaIngreso;
-    @Lob
-    @Column(name = "fotoUsuario")
-    private byte[] fotoUsuario;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "ficha", fetch = FetchType.LAZY)
     private List<Sugerencia> sugerenciaList;
     @OneToMany(mappedBy = "ficha", fetch = FetchType.LAZY)
@@ -113,13 +114,6 @@ public class Ficha implements Serializable {
         this.fechaIngreso = fechaIngreso;
     }
 
-    public byte[] getFotoUsuario() {
-        return fotoUsuario;
-    }
-
-    public void setFotoUsuario(byte[] fotoUsuario) {
-        this.fotoUsuario = fotoUsuario;
-    }
 
     @XmlTransient
     public List<Sugerencia> getSugerenciaList() {
@@ -187,6 +181,14 @@ public class Ficha implements Serializable {
     @Override
     public String toString() {
         return "co.edu.fenixri.backend.controladores.Ficha[ idFicha=" + idFicha + " ]";
+    }
+
+    public byte[] getFotoUsuario() {
+        return fotoUsuario;
+    }
+
+    public void setFotoUsuario(byte[] fotoUsuario) {
+        this.fotoUsuario = fotoUsuario;
     }
     
 }

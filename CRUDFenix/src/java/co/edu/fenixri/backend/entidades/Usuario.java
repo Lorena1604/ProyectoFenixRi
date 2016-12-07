@@ -7,7 +7,9 @@ package co.edu.fenixri.backend.entidades;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,15 +17,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -43,6 +50,20 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Usuario.findByContrasena", query = "SELECT u FROM Usuario u WHERE u.contrasena = :contrasena"),
     @NamedQuery(name = "Usuario.findByFechaNacimiento", query = "SELECT u FROM Usuario u WHERE u.fechaNacimiento = :fechaNacimiento")})
 public class Usuario implements Serializable {
+
+    @JoinTable(name = "rolesusuario", joinColumns = {
+        @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario")}, inverseJoinColumns = {
+        @JoinColumn(name = "rol", referencedColumnName = "idRol")})
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Rol> rolList;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.EAGER)
+    private Instructor instructor;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEstudiante", fetch = FetchType.EAGER)
+    private List<PagoEstudiante> pagoEstudianteList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.EAGER)
+    private List<Telefono> telefonoList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.EAGER)
+    private List<Ficha> fichaList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -219,6 +240,50 @@ public class Usuario implements Serializable {
     @Override
     public String toString() {
         return "co.edu.fenixri.backend.entidades.Usuario[ idUsuario=" + idUsuario + " ]";
+    }
+
+    @XmlTransient
+    public List<Rol> getRolList() {
+        return rolList;
+    }
+
+    public void setRolList(List<Rol> rolList) {
+        this.rolList = rolList;
+    }
+
+    public Instructor getInstructor() {
+        return instructor;
+    }
+
+    public void setInstructor(Instructor instructor) {
+        this.instructor = instructor;
+    }
+
+    @XmlTransient
+    public List<PagoEstudiante> getPagoEstudianteList() {
+        return pagoEstudianteList;
+    }
+
+    public void setPagoEstudianteList(List<PagoEstudiante> pagoEstudianteList) {
+        this.pagoEstudianteList = pagoEstudianteList;
+    }
+
+    @XmlTransient
+    public List<Telefono> getTelefonoList() {
+        return telefonoList;
+    }
+
+    public void setTelefonoList(List<Telefono> telefonoList) {
+        this.telefonoList = telefonoList;
+    }
+
+    @XmlTransient
+    public List<Ficha> getFichaList() {
+        return fichaList;
+    }
+
+    public void setFichaList(List<Ficha> fichaList) {
+        this.fichaList = fichaList;
     }
     
 }

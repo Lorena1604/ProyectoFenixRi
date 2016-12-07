@@ -21,6 +21,8 @@ import javax.faces.bean.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -147,7 +149,24 @@ public class UsuarioControlador {
     public void registrarUsuario() {
         usuarioFacade.create(usuario);
     }
+    
+       
+    public String registrsrUsuario(){
+        String respuesta = null;
+        try{
+            
+          usuario.setTelefono(telefono);
+          usuarioFacade.create(usuario);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO));
+            respuesta = "index?Faces-redirect=true";
+        }catch(Exception e){
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, respuesta));
+        }
+        
+        return respuesta;
+    }
 
+    
     public List<Usuario> listarUsuarios() {
         return usuarioFacade.findAll();
     }

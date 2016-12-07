@@ -34,17 +34,18 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Evidencia.findByIdEvidencias", query = "SELECT e FROM Evidencia e WHERE e.idEvidencias = :idEvidencias")})
 public class Evidencia implements Serializable {
 
+    @Basic(optional = false)
+    @NotNull
+    @Lob
+    @Column(name = "documentos")
+    private byte[] documentos;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idEvidencias")
     private Integer idEvidencias;
-    @Basic(optional = false)
-    @NotNull
-    @Lob
-    @Column(name = "documentos")
-    private byte[] documentos;
     @JoinColumn(name = "idActividad", referencedColumnName = "idActividad")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Actividad idActividad;
@@ -69,13 +70,6 @@ public class Evidencia implements Serializable {
         this.idEvidencias = idEvidencias;
     }
 
-    public byte[] getDocumentos() {
-        return documentos;
-    }
-
-    public void setDocumentos(byte[] documentos) {
-        this.documentos = documentos;
-    }
 
     public Actividad getIdActividad() {
         return idActividad;
@@ -108,6 +102,14 @@ public class Evidencia implements Serializable {
     @Override
     public String toString() {
         return "co.edu.fenixri.backend.controladores.Evidencia[ idEvidencias=" + idEvidencias + " ]";
+    }
+
+    public byte[] getDocumentos() {
+        return documentos;
+    }
+
+    public void setDocumentos(byte[] documentos) {
+        this.documentos = documentos;
     }
     
 }

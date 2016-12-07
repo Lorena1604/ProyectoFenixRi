@@ -6,7 +6,9 @@
 package co.edu.fenixri.backend.entidades;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,10 +17,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -32,17 +36,20 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Instructor.findByIdInstructor", query = "SELECT i FROM Instructor i WHERE i.idInstructor = :idInstructor")})
 public class Instructor implements Serializable {
 
+    @Basic(optional = false)
+    @NotNull
+    @Lob
+    @Column(name = "licenciaDeportiva")
+    private byte[] licenciaDeportiva;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idInstructor", fetch = FetchType.EAGER)
+    private List<Respuesta> respuestaList;
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
     @Column(name = "idInstructor")
     private Integer idInstructor;
-    @Basic(optional = false)
-    @NotNull
-    @Lob
-    @Column(name = "licenciaDeportiva")
-    private byte[] licenciaDeportiva;
     @JoinColumn(name = "idInstructor", referencedColumnName = "idUsuario", insertable = false, updatable = false)
     @OneToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario usuario;
@@ -67,13 +74,6 @@ public class Instructor implements Serializable {
         this.idInstructor = idInstructor;
     }
 
-    public byte[] getLicenciaDeportiva() {
-        return licenciaDeportiva;
-    }
-
-    public void setLicenciaDeportiva(byte[] licenciaDeportiva) {
-        this.licenciaDeportiva = licenciaDeportiva;
-    }
 
     public Usuario getUsuario() {
         return usuario;
@@ -106,6 +106,23 @@ public class Instructor implements Serializable {
     @Override
     public String toString() {
         return "co.edu.fenixri.backend.entidades.Instructor[ idInstructor=" + idInstructor + " ]";
+    }
+
+    public byte[] getLicenciaDeportiva() {
+        return licenciaDeportiva;
+    }
+
+    public void setLicenciaDeportiva(byte[] licenciaDeportiva) {
+        this.licenciaDeportiva = licenciaDeportiva;
+    }
+
+    @XmlTransient
+    public List<Respuesta> getRespuestaList() {
+        return respuestaList;
+    }
+
+    public void setRespuestaList(List<Respuesta> respuestaList) {
+        this.respuestaList = respuestaList;
     }
     
 }
