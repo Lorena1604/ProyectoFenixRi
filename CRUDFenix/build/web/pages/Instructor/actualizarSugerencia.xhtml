@@ -15,30 +15,28 @@
 
             <h:messages errorClass="errors" showDetail="true" showSummary="true" warnStyle="color: blue" infoStyle="colo: green" errorStyle="color: red"/>
 
-            <p:layoutUnit position="north" size="50" resizable="true" closable="true" collapsible="true">Actualizar usuario</p:layoutUnit>
+            <p:layoutUnit position="north" size="50" resizable="true" closable="true" collapsible="true">Actualizar sugerencia</p:layoutUnit>
 
             <p:panelGrid columns="3">
+                                                 
+                <p:outputLabel value="fichas" 
+                               for="fichas" />                   
+
+                <p:selectOneMenu id="fichas" value="#{sugerenciaControlador.sugerencia.ficha}" required="true" requiredMessage="la ficha es requerida." converter="fichaConvertidor">
+                    <!-- TODO: update below reference to list of available items-->
+                    <f:selectItems value="#{sugerenciaControlador.fichas}" var="item"                                      
+                                   itemLabel="#{item.idFicha}"
+                                   itemValue="#{item}"/> 
+                    <f:selectItems/>
+                </p:selectOneMenu>
+
+                <p:outputLabel value="Sugerencia:" for="txtSugerencia" />
+                <p:inputTextarea rows="4" cols="30" id="sugerencia" value="#{sugerenciaControlador.sugerencia.sugerencia}" title="Sugerencia" required="true" />
+                <h:message for="txtSugerencia"/>
 
 
-                <f:view>
 
-
-                    <h:form>
-                        <h1><h:outputText value="Actualizar"/></h1>
-                        <p:panelGrid columns="2">
-                            <p:outputLabel value="IdSugerencia:" for="idSugerencia" />
-                            <p:inputText id="idSugerencia" value="#{sugerenciaControlador.sugerencia.idSugerencia}" title="IdSugerencia" />
-                            
-                            <p:outputLabel value="Sugerencia:" for="sugerencia" />
-                            <p:inputTextarea rows="4" cols="30" id="sugerencia" value="#{sugerenciaControlador.sugerencia.sugerencia}" title="Sugerencia"/>
-
-                            <p:outputLabel value="Ficha:" for="ficha" />
-                            <p:selectOneMenu id="ficha" value="#{sugerenciaControlador.sugerencia.ficha}" >
-                                <!-- TODO: update below reference to list of available items-->
-                                <f:selectItems value="#{fixme}"/>
-                            </p:selectOneMenu>
-
-                            <h:commandButton id="btnUpdateSugerencia" value="Actualizar" actionListener="#{sugerenciaControlador.actualizarSugerencia(sugerenciaControlador.actualizarSugerencia(sugerenciaControlador.sugerencia))}"/>
+                <h:commandButton id="btnUpdateSugerencia" value="Actualizar" actionListener="#{sugerenciaControlador.actualizarSugerencia(sugerenciaControlador.sugerencia))}"/>
 
             </p:panelGrid>
         </h:form>

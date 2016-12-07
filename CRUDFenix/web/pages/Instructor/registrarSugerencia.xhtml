@@ -16,17 +16,21 @@
             <p:layoutUnit position="north" size="50" resizable="true" closable="true" collapsible="true">Registrar nueva sugerencia</p:layoutUnit>
 
             <p:panelGrid columns="3">
+                <p:outputLabel value="fichas" 
+                               for="fichas" />                   
 
-                <p:outputLabel value="ficha" for="txtFicha"/>
-                <p:inputText id="txtFicha" title="Ingrese ficha: " value="#{sugerenciaControlador.sugerencia.ficha}" required="true" requiredMessage="campo requerido"/>
-                <h:message for="txtFicha"/>
+                <p:selectOneMenu id="fichas" value="#{sugerenciaControlador.sugerencia.ficha}" required="true" requiredMessage="la ficha es requerida." converter="fichaConvertidor">
+                    <!-- TODO: update below reference to list of available items-->
+                    <f:selectItems value="#{sugerenciaControlador.fichas}" var="item"                                      
+                                   itemLabel="#{item.idFicha}"
+                                   itemValue="#{item}"/> 
+                    <f:selectItems/>
+                </p:selectOneMenu>
 
-                <p:outputLabel value="Sugerencia:" 
-                               for="txtSugerencia" />                      
-                <p:inputTextarea id="txtSugerencia" 
-                                 value="#{sugerenciaControlador.sugerencia.sugerencia}" 
-                                 required="true" />
+                <p:outputLabel value="Sugerencia:"   for="txtSugerencia" />                      
+                <p:inputTextarea id="txtSugerencia"  value="#{sugerenciaControlador.sugerencia.sugerencia}" required="true" />
                 <p:message for="txtSugerencia"/>
+
 
                 <h:commandButton id="btnRegistro" value="Registrar" actionListener="#{sugerenciaControlador.registroSugerencia()}"/>
 

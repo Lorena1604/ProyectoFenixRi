@@ -6,7 +6,9 @@
 package co.edu.fenixri.frontend.controladores;
 
 import co.edu.fenixri.backend.entidades.PagoEstudiante;
+import co.edu.fenixri.backend.entidades.Usuario;
 import co.edu.fenixri.backend.facade.PagoEstudianteFacadeLocal;
+import co.edu.fenixri.backend.facade.UsuarioFacadeLocal;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -23,8 +25,11 @@ public class PagoEstudianteControlador {
 
     @EJB
     private PagoEstudianteFacadeLocal pagoEstudianteFacadeLocal;
-
     private PagoEstudiante pagoEstudiante;
+
+    @EJB
+    private UsuarioFacadeLocal usuarioFacadeLocal;
+    private List<Usuario> usuarios;
 
     public PagoEstudianteControlador() {
     }
@@ -37,30 +42,47 @@ public class PagoEstudianteControlador {
         this.pagoEstudiante = pagoEstudiante;
     }
 
+    public List<Usuario> getUsuarios() {
+        usuarios = usuarioFacadeLocal.findAll();
+        return usuarios;
+    }
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.pagoEstudiante = pagoEstudiante;
+    }
+
     @PostConstruct
     public void init() {
         pagoEstudiante = new PagoEstudiante();
     }
 
-        public void registroPagoEstudiante() {
-        pagoEstudianteFacadeLocal.create(pagoEstudiante);
+
+    public String registrarPagoEstudiante() {
+        String salida = "";
+        try {
+            pagoEstudianteFacadeLocal.create(pagoEstudiante);
+        } catch (Exception e) {
+            salida = "Error " + e.getMessage();
+        }
+        return salida;
     }
 
-    public List<PagoEstudiante> listaPagoEstudiante() {
-        return this.pagoEstudianteFacadeLocal.findAll();
+    public List<PagoEstudiante> listarPagoEstudiante() {
+        return pagoEstudianteFacadeLocal.findAll();
     }
 
-/*    public void eliminarPagoEstudiante(PagoEstudiante pagoEstudiante) {
+    public void eliminarPagoEstudiante(PagoEstudiante pagoEstudiante) {
         pagoEstudianteFacadeLocal.remove(pagoEstudiante);
+
     }
 
-    public String redireccion(PagoEstudiante p) {
-        pagoEstudiante = p;
+    public String redireccion(PagoEstudiante pagoEstudiante) {
+        this.pagoEstudiante = pagoEstudiante;
         return "actualizarPagoEstudiante";
     }
 
-    public void actualizarUsuario(PagoEstudiante pagoEstudiante) {
+    public void actualizarPagoEstudiante(PagoEstudiante pagoEstudiante) {
         pagoEstudianteFacadeLocal.edit(pagoEstudiante);
-    }*/
+    }
 
 }

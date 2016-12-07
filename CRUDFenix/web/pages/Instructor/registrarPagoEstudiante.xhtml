@@ -10,36 +10,42 @@
     <h:body>
 
         <center>       
-        <f:view>
+            <f:view>
 
 
-            <h:form>
-                <h1><h:outputText value="Create/Edit"/></h1>
-                <p:panelGrid columns="2">
-                    <p:outputLabel value="Idpago:" for="idpago" />
-                    <p:inputText id="idpago" value="#{pagoEstudianteControlador.pagoEstudiante.idpago}" title="Idpago" required="true" requiredMessage="The Idpago field is required."/>
-                    <p:outputLabel value="FechaPago:" for="fechaPago" />
-                    <p:inputText id="fechaPago" value="#{pagoEstudianteControlador.pagoEstudiante.fechaPago}" title="FechaPago" required="true" requiredMessage="The FechaPago field is required.">
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </p:inputText>
-                    <p:outputLabel value="Monto:" for="monto" />
-                    <p:inputText id="monto" value="#{pagoEstudianteControlador.pagoEstudiante.monto}" title="Monto" required="true" requiredMessage="The Monto field is required."/>
-                    <p:outputLabel value="Mensualidad:" for="mensualidad" />
-                    <p:inputText id="mensualidad" value="#{pagoEstudianteControlador.pagoEstudiante.mensualidad}" title="Mensualidad" required="true" requiredMessage="The Mensualidad field is required.">
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </p:inputText>
-                    <p:outputLabel value="IdEstudiante:" for="idEstudiante" />
-                    <p:selectOneMenu id="idEstudiante" value="#{pagoEstudianteControlador.pagoEstudiante.idEstudiante}" required="true" requiredMessage="The IdEstudiante field is required.">
-                        <!-- TODO: update below reference to list of available items-->
-                        <f:selectItems value="#{actividadControlador}"/>
-                    </p:selectOneMenu>
-                </p:panelGrid>
-            </h:form>
-        </f:view>
+                <h:form>
+                    <h1><h:outputText value="Create/Edit"/></h1>
+                    <p:panelGrid columns="2">
+
+                        <p:outputLabel value="IdEstudiante:" for="idEstudiante" />
+                        <p:selectOneMenu id="idEstudiante" value="#{pagoEstudianteControlador.pagoEstudiante.idEstudiante}" required="true" requiredMessage="The identificacion field is required." converter="modificarUsuarioConvertidor">
+                            <!-- TODO: update below reference to list of available items-->
+                            <f:selectItems value="#{pagoEstudianteControlador.usuarios}" var="item"                                       
+                                           itemLabel="#{item.idUsuario}"
+                                           itemValue="#{item}"/> 
+                            <f:selectItems/>
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="FechaPago:" for="fechaPago" />
+                        <p:inputText id="fechaPago" value="#{pagoEstudianteControlador.pagoEstudiante.fechaPago}" title="FechaPago" required="true" requiredMessage="The FechaPago field is required.">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </p:inputText>
+
+                        <p:outputLabel value="Monto:" for="monto" />
+                        <p:inputText id="monto" value="#{pagoEstudianteControlador.pagoEstudiante.monto}" title="Monto" required="true" requiredMessage="The Monto field is required."/>
+
+                        <p:outputLabel value="Mensualidad:" for="mensualidad" />
+                        <p:inputText id="mensualidad" value="#{pagoEstudianteControlador.pagoEstudiante.mensualidad}" title="Mensualidad" required="true" requiredMessage="The Mensualidad field is required.">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </p:inputText>
+
+                    </p:panelGrid>
+                </h:form>
+            </f:view>
 
         </center>
-        
-        
+
+
     </h:body>
 </html>
 

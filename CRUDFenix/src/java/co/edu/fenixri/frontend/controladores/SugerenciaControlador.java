@@ -5,7 +5,9 @@
  */
 package co.edu.fenixri.frontend.controladores;
 
+import co.edu.fenixri.backend.entidades.Ficha;
 import co.edu.fenixri.backend.entidades.Sugerencia;
+import co.edu.fenixri.backend.facade.FichaFacadeLocal;
 import co.edu.fenixri.backend.facade.SugerenciaFacadeLocal;
 import javax.inject.Named;
 import java.io.Serializable;
@@ -27,12 +29,16 @@ public class SugerenciaControlador implements Serializable {
      */
     @EJB
     private SugerenciaFacadeLocal sugerenciaFacadeLocal;
-
+    
     private Sugerencia sugerencia;
-
+    
+    @EJB
+    private FichaFacadeLocal fichaFacadeLocal;
+    private List<Ficha> fichas;
+    
     public SugerenciaControlador() {
     }
-
+    
     @PostConstruct
     public void init() {
         this.sugerencia = new Sugerencia();
@@ -42,31 +48,47 @@ public class SugerenciaControlador implements Serializable {
     public Sugerencia getSugerencia() {
         return sugerencia;
     }
-
+    
     public void setSugerencia(Sugerencia sugerencia) {
         this.sugerencia = sugerencia;
     }
+    
+    public List<Ficha> getFichas() {
+        fichas = fichaFacadeLocal.findAll();
+        return fichas;
+    }
+    
+    public void setFichas(List<Ficha> fichas) {
+        this.fichas = fichas;
+    }
 
     //METODOS
-    public void registroSugerencia() {
-        sugerenciaFacadeLocal.create(sugerencia);
+    public String registroSugerencia() {
+        String salida = "";
+        try {
+            sugerenciaFacadeLocal.create(sugerencia);
+        } catch (Exception e) {
+            salida = "Error " + e.getMessage();
+        }
+        return salida;
     }
-
+    
     public List<Sugerencia> listaSugerencias() {
-        return this.sugerenciaFacadeLocal.findAll();
+        return sugerenciaFacadeLocal.findAll();
     }
-
+    
     public void eliminarSugerencia(Sugerencia sugerencia) {
         sugerenciaFacadeLocal.remove(sugerencia);
     }
-
-    public String redireccion(Sugerencia s) {
-        sugerencia = s;
-        return "actualizarUsuario";
+    
+    public String redireccion(Sugerencia sugerencia) {
+        sugerencia = sugerencia;
+        return "actualizarSugerencia";
     }
-
+    
     public void actualizarSugerencia(Sugerencia sugerencia) {
         sugerenciaFacadeLocal.edit(sugerencia);
+        
     }
-
+    
 }
