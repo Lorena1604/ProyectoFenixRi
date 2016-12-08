@@ -18,7 +18,7 @@
             <p:layoutUnit position="north" size="50" resizable="true" closable="true" collapsible="true">Actualizar sugerencia</p:layoutUnit>
 
             <p:panelGrid columns="3">
-                                                 
+
                 <p:outputLabel value="fichas" 
                                for="fichas" />                   
 
@@ -29,9 +29,11 @@
                                    itemValue="#{item}"/> 
                     <f:selectItems/>
                 </p:selectOneMenu>
+                <h:message for="fichas"/>
+
 
                 <p:outputLabel value="Sugerencia:" for="txtSugerencia" />
-                <p:inputTextarea rows="4" cols="30" id="sugerencia" value="#{sugerenciaControlador.sugerencia.sugerencia}" title="Sugerencia" required="true" />
+                <p:inputTextarea rows="4" cols="30" id="sugerencia" value="#{sugerenciaControlador.sugerencia.sugerencia}" title="Sugerencia" required="true" requiredMessage="la sugerencia es requerida"/>
                 <h:message for="txtSugerencia"/>
 
 

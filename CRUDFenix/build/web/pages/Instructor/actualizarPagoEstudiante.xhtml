@@ -27,19 +27,26 @@
                                    itemValue="#{item}"/> 
                     <f:selectItems/>
                 </p:selectOneMenu>
+                <h:message for="idEstudiante"/>
+
 
                 <p:outputLabel value="FechaPago:" for="fechaPago" />
                 <p:inputText id="fechaPago" value="#{pagoEstudianteControlador.pagoEstudiante.fechaPago}" title="FechaPago" required="true" requiredMessage="la fecha de pago es requerida." placeholder="01/mm/yyyy">
                     <f:convertDateTime pattern="dd/MM/yyyy" />
                 </p:inputText>
+                <h:message for="fechaPago"/>
 
                 <p:outputLabel value="Monto:" for="monto" />
                 <p:inputText id="monto" value="#{pagoEstudianteControlador.pagoEstudiante.monto}" title="Monto" required="true" requiredMessage="El monto es requerido."/>
+                <h:message for="monto"/>
+
 
                 <p:outputLabel value="Mensualidad(dia/mes/año):" for="mensualidad" />
                 <p:inputText id="mensualidad" value="#{pagoEstudianteControlador.pagoEstudiante.mensualidad}" title="Mensualidad" required="true" requiredMessage="La mensualidad es requerida." placeholder="dd/mm/yyyy">
                     <f:convertDateTime pattern="dd/MM/yyyy" />
                 </p:inputText>
+                <h:message for="mensualidad"/>
+
 
                 <h:commandButton id="btnUpdateSugerencia" value="Actualizar" actionListener="#{pagoEstudianteControlador.actualizarPagoEstudiante(pagoEstudianteControlador.pagoEstudiante)}"/>
 
