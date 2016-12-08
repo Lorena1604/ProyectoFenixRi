@@ -5,9 +5,8 @@
  */
 package co.edu.fenixri.frontend.convertidores;
 
-import co.edu.fenixri.backend.entidades.Actividad;
-import co.edu.fenixri.backend.facade.ActividadFacadeLocal;
-
+import co.edu.fenixri.backend.entidades.Sugerencia;
+import co.edu.fenixri.backend.facade.SugerenciaFacadeLocal;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.SessionScoped;
@@ -20,34 +19,31 @@ import javax.faces.convert.FacesConverter;
  *
  * @author Oscar Daniel Garzon
  */
-@FacesConverter(value = "actividadConvertidor")
+@FacesConverter(value = "sugerenciaConvertidor")
 @SessionScoped
-public class ActividadConvertidor implements Converter {
+public class SugerenciaConvertidor implements Converter {
 
-    /**
-     * Creates a new instance of ActividadConvertidor
-     */
-    @EJB
-    private ActividadFacadeLocal actividadFacade;
-
-    public ActividadConvertidor() {
+    public SugerenciaConvertidor() {
     }
+
+    @EJB
+    private SugerenciaFacadeLocal sugerenciaFacade;
 
     @Override
     public Object getAsObject(FacesContext contexto, UIComponent componente, String valor) {
-        List<Actividad> actividades = this.actividadFacade.findAll();
-        for (Actividad objeto : actividades) {
-            if (objeto.getIdActividad()== Integer.parseInt(valor)) {
+        List<Sugerencia> sugerencias = this.sugerenciaFacade.findAll();
+        for (Sugerencia objeto : sugerencias) {
+            if (objeto.getIdSugerencia()== Integer.parseInt(valor)) {
                 return objeto;
             }
         }
         return null;
     }
-
-    @Override
+    
+        @Override
     public String getAsString(FacesContext contexto, UIComponent componente, Object objeto) {
         if (objeto != null) {
-            return ((Actividad) objeto).getIdActividad().toString();
+            return ((Sugerencia) objeto).getIdSugerencia().toString();
         } else {
             return "";
         }

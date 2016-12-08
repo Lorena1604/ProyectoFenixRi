@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Registro de Fichas</title>
+    </h:head>
+    <h:body>
+        Formulario de registro de fichas
+        <br/>
+        <h:form>
+            <h:messages errorClass="errors" showDetail="true" showSummary="true" warnStyle="color: blue" infoStyle="colo: green" errorStyle="color: red"/>
+
+            <p:layoutUnit position="north" size="50" resizable="true" closable="true" collapsible="true">Registrar nueva ficha</p:layoutUnit>
+
+
+            <h1><h:outputText value="registro de fichas"/></h1>
+            <p:tab>
+                <p:fieldset legend="Cargar archivo jpg de foto del usuario">
+
+
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="Cargar archivo" for="fileUpload" />
+                        <h:inputFile value="#{fichaControlador.fileUpload}" id="fileUpload" />
+
+                        <h:outputLabel value="Texto" for="txt" />
+                        <h:inputText id="txt" alt="referencia" value="#{fichaControlador.texto}"required="true" requiredMessage="este campo es requerido."/>
+
+                        <h:commandButton value="Cargar"/>
+
+
+                    </h:panelGrid>
+
+                    <!--En este ejemplo se muestra la carga de un archivo
+                    al servidor a la carpeta llamada jpg-->
+
+                    <h:panelGrid rendered="#{not empty(fichaControlador.fileUpload)}" columns="2"  >
+
+                        <h:outputText value="nombre archivo "/>
+                        <h:outputText value="#{fichaControlador.fileUpload.submittedFileName}" />
+
+                        <h:outputText value="contentType:" />
+                        <h:outputText value="#{fichaControlador.fileUpload.contentType}" />
+
+                        <h:outputText value="size:" />
+                        <h:outputText value="#{((fichaControlador.fileUpload.size)/1024)}" >
+                            <f:convertNumber pattern="###,### Kb" />
+                        </h:outputText>
+
+                        <h:outputText value="contenido " />
+                        <h:outputText value="#{fichaControlador.fileUpload.inputStream}" />
+
+                        <h:outputText value="Ruta " />
+                        <h:outputText value="#{fichaControlador.servletContext.getRealPath(jpg)}\\jpg\\" />
+                    </h:panelGrid>
+
+                </p:fieldset>
+            </p:tab>
+
+            <p:tab>     
+                <p:fieldset>
+
+                    <p:panelGrid columns="3">
+
+                        <p:outputLabel value="Numero de Registro:" for="numeroRegistro" />
+                        <p:inputText id="numeroRegistro" value="#{fichaControlador.ficha.numeroRegistro}" title="NumeroRegistro" required="true" requiredMessage="El numero de registro es requerido."/>
+                        <p:message for="numeroRegistro"/>
+
+                        <p:outputLabel value="Fecha de ingreso:" for="fechaIngreso" />
+                        <p:inputText id="fechaIngreso" value="#{fichaControlador.ficha.fechaIngreso}" title="Fecha de ingreso" required="true" requiredMessage="La fecha de ingreso es requerida.">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </p:inputText>
+                        <p:message for="fechaIngreso"/>
+
+
+                        <p:outputLabel value="Identificacion del usuario:" for="idUsuario" />
+                        </p:selectOneMenu>
+                        <p:outputLabel value="IdUsuario:" for="idUsuario" />
+                        <p:selectOneMenu id="idUsuario" value="#{fichaControlador.ficha.idUsuario}" 
+                                         required="true" requiredMessage="La identificacion del usuario es requerida." 
+                                         converter="ModificarUsuarioConvertidor">
+                            <!-- TODO: update below reference to list of available items-->
+                            <f:selectItems value="#{fichaControlador.usuarios}" var="item"                                       
+                                           itemLabel="#{item.identificacion}"
+                                           itemValue="#{item}"/> 
+                            <f:selectItems/>                
+                        </p:selectOneMenu>
+                        <p:message for="idUsuario"/>
+
+                        <p:outputLabel value="EPS del usuario:" for="epsUsuario" />
+                        <p:selectOneMenu id="epsUsuario" value="#{fichaControlador.ficha.epsUsuario}" 
+                                         required="true" requiredMessage="La EPS del usuario es requerida." 
+                                         converter="epsConvertidor">
+                            <!-- TODO: update below reference to list of available items-->
+                            <f:selectItems value="#{fichaControlador.epss}" var="item"                                       
+                                           itemLabel="#{item.nombre}"
+                                           itemValue="#{item}"/> 
+                            <f:selectItems/>                
+                        </p:selectOneMenu>
+                        <p:message for="epsUsuario"/>
+
+                        <h:commandButton actionListener="#{fichaControlador.registrarFicha()}" value="registrar" />
+
+                    </p:panelGrid>
+                </p:fieldset>
+            </p:tab>
+        </h:form>
+    </h:body>
+</html>
+

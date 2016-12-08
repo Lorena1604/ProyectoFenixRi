@@ -5,7 +5,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>registro Sugerencias</title>
+        <title>registro de sugerencias</title>
     </h:head>
     <h:body>
         Formulario de registro de sugerencia
@@ -16,7 +16,7 @@
             <p:layoutUnit position="north" size="50" resizable="true" closable="true" collapsible="true">Registrar nueva sugerencia</p:layoutUnit>
 
             <p:panelGrid columns="3">
-                
+
                 <p:outputLabel value="Codigo de la ficha" for="fichas"/>
                 <p:selectOneMenu id="fichas" value="#{sugerenciaControlador.sugerencia.ficha}" required="true" requiredMessage="la ficha es requerida." converter="fichaConvertidor">
                     <!-- TODO: update below reference to list of available items-->
@@ -25,6 +25,7 @@
                                    itemValue="#{item}"/> 
                     <f:selectItems/>
                 </p:selectOneMenu>
+                <p:message for="fichas"/>
 
                 <p:outputLabel value="Sugerencia:"   for="txtSugerencia" />                      
                 <p:inputTextarea id="txtSugerencia"  value="#{sugerenciaControlador.sugerencia.sugerencia}" required="true" requiredMessage="la sugerencia es requerida." />

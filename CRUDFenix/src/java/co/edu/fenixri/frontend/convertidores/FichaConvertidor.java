@@ -29,12 +29,12 @@ public class FichaConvertidor implements Converter {
      * Creates a new instance of ActividadConvert
      */
     @EJB
-    private FichaFacadeLocal fichaFacadeLocal;
+    private FichaFacadeLocal fichaFacade;
     public FichaConvertidor() {
     }
     @Override
     public Object getAsObject(FacesContext contexto, UIComponent componente, String valor) {
-        List<Ficha> fichas = this.fichaFacadeLocal.findAll();
+        List<Ficha> fichas = this.fichaFacade.findAll();
         for (Ficha objeto : fichas) {
             if (objeto.getIdFicha()== Integer.parseInt(valor)) {
                 return objeto;

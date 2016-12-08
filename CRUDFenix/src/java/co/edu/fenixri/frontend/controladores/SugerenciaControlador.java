@@ -6,8 +6,10 @@
 package co.edu.fenixri.frontend.controladores;
 
 import co.edu.fenixri.backend.entidades.Ficha;
+import co.edu.fenixri.backend.entidades.Instructor;
 import co.edu.fenixri.backend.entidades.Sugerencia;
 import co.edu.fenixri.backend.facade.FichaFacadeLocal;
+import co.edu.fenixri.backend.facade.InstructorFacadeLocal;
 import co.edu.fenixri.backend.facade.SugerenciaFacadeLocal;
 import javax.inject.Named;
 import java.io.Serializable;
@@ -36,6 +38,8 @@ public class SugerenciaControlador implements Serializable {
     private FichaFacadeLocal fichaFacadeLocal;
     private List<Ficha> fichas;
     
+
+    
     public SugerenciaControlador() {
     }
     
@@ -62,6 +66,7 @@ public class SugerenciaControlador implements Serializable {
         this.fichas = fichas;
     }
 
+    
     //METODOS
     public String registroSugerencia() {
         String salida = "";

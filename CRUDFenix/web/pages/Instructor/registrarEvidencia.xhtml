@@ -11,6 +11,11 @@
         Formulario de registro de evidencias
 
         <h:form>
+
+            <h:messages errorClass="errors" showDetail="true" showSummary="true" warnStyle="color: blue" infoStyle="colo: green" errorStyle="color: red"/>
+
+            <p:layoutUnit position="north" size="50" resizable="true" closable="true" collapsible="true">Registrar nueva ficha</p:layoutUnit>
+
             <h1><h:outputText value="registro de evidencias"/></h1>
             <p:tab>
                 <p:fieldset legend="Cargar archivo pdf de documento de evidencia">
@@ -55,7 +60,7 @@
             </p:tab>
 
             <p:tab>
-                <p:fieldset legend="Cargar archivo con primefaces">
+                <p:fieldset>
 
                     <p:panelGrid columns="3">
                         <p:outputLabel value="Actividad:" for="idActividad" />
@@ -70,6 +75,8 @@
                                            itemValue="#{item}"/> 
                             <f:selectItems/>
                         </p:selectOneMenu>
+                        <p:message for="idActividad"/>
+
                         <h:commandButton actionListener="#{evidenciaControlador.registroEvidencia()}" value="registrar" />
 
                     </p:panelGrid>                

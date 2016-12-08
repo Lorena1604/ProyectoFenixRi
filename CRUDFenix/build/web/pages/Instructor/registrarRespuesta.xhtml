@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Registro de respuestas</title>
+    </h:head>
+    <h:body>
+        Formulario de registro de respuestas
+        <br/>
+        <h:form>
+            <h:messages errorClass="errors" showDetail="true" showSummary="true" warnStyle="color: blue" infoStyle="colo: green" errorStyle="color: red"/>
+
+            <p:layoutUnit position="north" size="50" resizable="true" closable="true" collapsible="true">Registrar nueva respuesta</p:layoutUnit>
+
+            <p:panelGrid columns="3">
+
+                <p:outputLabel value="Codigo del instructor" for="idInstructor"/>
+                <p:selectOneMenu id="idInstructor" value="#{respuestaControlador.respuesta.idInstructor}" required="true" requiredMessage="el codigo del instructor es requerido." converter="instructorConvertidor">
+                    <!-- TODO: update below reference to list of available items-->
+                    <f:selectItems value="#{respuestaControlador.instructores}" var="item"                                      
+                                   itemLabel="#{item.idInstructor}"
+                                   itemValue="#{item}"/> 
+                    <f:selectItems/>
+                </p:selectOneMenu>
+                <p:message for="idInstructor"/>
+
+                
+                <p:outputLabel value="Codigo de la sugerencia" for="idSugerencia"/>
+                <p:selectOneMenu id="idSugerencia" value="#{respuestaControlador.respuesta.idSugerencia}" required="true" requiredMessage="el codigo de la sugerencia es requerido." converter="sugerenciaConvertidor">
+                    <!-- TODO: update below reference to list of available items-->
+                    <f:selectItems value="#{respuestaControlador.sugerencias}" var="item"                                      
+                                   itemLabel="#{item.idSugerencia}"
+                                   itemValue="#{item}"/> 
+                    <f:selectItems/>
+                </p:selectOneMenu>
+                <p:message for="idSugerencia"/>
+
+                <p:outputLabel value="Respuesta"   for="txtRespuesta" />                      
+                <p:inputTextarea id="txtRespuesta"  value="#{respuestaControlador.respuesta.respuesta}" required="true" requiredMessage="la respuesta es requerida." />
+                <p:message for="txtRespuesta"/>
+
+                <h:commandButton id="btnRegistro" value="Registrar" actionListener="#{respuestaControlador.registrarRespuesta()}"/>
+
+            </p:panelGrid>
+        </h:form>
+    </h:body>
+</html>

@@ -5,9 +5,8 @@
  */
 package co.edu.fenixri.frontend.convertidores;
 
-import co.edu.fenixri.backend.entidades.Actividad;
-import co.edu.fenixri.backend.facade.ActividadFacadeLocal;
-
+import co.edu.fenixri.backend.entidades.Instructor;
+import co.edu.fenixri.backend.facade.InstructorFacadeLocal;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.SessionScoped;
@@ -20,24 +19,24 @@ import javax.faces.convert.FacesConverter;
  *
  * @author Oscar Daniel Garzon
  */
-@FacesConverter(value = "actividadConvertidor")
+@FacesConverter(value = "instructorConvertidor")
 @SessionScoped
-public class ActividadConvertidor implements Converter {
-
+public class InstructorConvertidor implements Converter{
+    
+        @EJB        
+    private InstructorFacadeLocal instructorFacade;
+        
     /**
-     * Creates a new instance of ActividadConvertidor
+     * Creates a new instance of instructorConvertidor
      */
-    @EJB
-    private ActividadFacadeLocal actividadFacade;
-
-    public ActividadConvertidor() {
+    public InstructorConvertidor() {
     }
-
+    
     @Override
     public Object getAsObject(FacesContext contexto, UIComponent componente, String valor) {
-        List<Actividad> actividades = this.actividadFacade.findAll();
-        for (Actividad objeto : actividades) {
-            if (objeto.getIdActividad()== Integer.parseInt(valor)) {
+        List<Instructor> instructores = this.instructorFacade.findAll();
+        for (Instructor objeto : instructores) {
+            if (objeto.getIdInstructor()== Integer.parseInt(valor)) {
                 return objeto;
             }
         }
@@ -47,10 +46,9 @@ public class ActividadConvertidor implements Converter {
     @Override
     public String getAsString(FacesContext contexto, UIComponent componente, Object objeto) {
         if (objeto != null) {
-            return ((Actividad) objeto).getIdActividad().toString();
+            return ((Instructor) objeto).getIdInstructor().toString();
         } else {
             return "";
         }
     }
-
 }
