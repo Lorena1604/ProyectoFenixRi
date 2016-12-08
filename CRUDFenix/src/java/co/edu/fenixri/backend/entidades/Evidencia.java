@@ -46,8 +46,11 @@ public class Evidencia implements Serializable {
     @Basic(optional = false)
     @Column(name = "idEvidencias")
     private Integer idEvidencias;
+    
     @JoinColumn(name = "idActividad", referencedColumnName = "idActividad")
+    
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    
     private Actividad idActividad;
 
     public Evidencia() {

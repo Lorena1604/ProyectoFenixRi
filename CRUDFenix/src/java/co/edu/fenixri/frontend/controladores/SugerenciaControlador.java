@@ -81,8 +81,8 @@ public class SugerenciaControlador implements Serializable {
         sugerenciaFacadeLocal.remove(sugerencia);
     }
     
-    public String redireccion(Sugerencia sugerencia) {
-        sugerencia = sugerencia;
+    public String redireccion(Sugerencia s) {
+        sugerencia = s;
         return "actualizarSugerencia";
     }
     

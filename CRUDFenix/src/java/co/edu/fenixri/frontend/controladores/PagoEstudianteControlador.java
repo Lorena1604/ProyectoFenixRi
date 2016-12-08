@@ -9,6 +9,7 @@ import co.edu.fenixri.backend.entidades.PagoEstudiante;
 import co.edu.fenixri.backend.entidades.Usuario;
 import co.edu.fenixri.backend.facade.PagoEstudianteFacadeLocal;
 import co.edu.fenixri.backend.facade.UsuarioFacadeLocal;
+import java.util.Calendar;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -34,6 +35,11 @@ public class PagoEstudianteControlador {
     public PagoEstudianteControlador() {
     }
 
+    @PostConstruct
+    public void init() {
+        pagoEstudiante = new PagoEstudiante();
+    }
+
     public PagoEstudiante getPagoEstudiante() {
         return pagoEstudiante;
     }
@@ -48,15 +54,20 @@ public class PagoEstudianteControlador {
     }
 
     public void setUsuarios(List<Usuario> usuarios) {
-        this.pagoEstudiante = pagoEstudiante;
+        this.usuarios = usuarios;
     }
+    
+/*        Calendar c = Calendar.getInstance();
 
-    @PostConstruct
-    public void init() {
-        pagoEstudiante = new PagoEstudiante();
-    }
+    c.setTime (PagoEstudiante.mensualidad);
 
-
+    c.set (Calendar.DAY, 
+    01);
+    fromDate  = c.getTime();
+*/
+    
+    
+//METODOS
     public String registrarPagoEstudiante() {
         String salida = "";
         try {
@@ -76,8 +87,8 @@ public class PagoEstudianteControlador {
 
     }
 
-    public String redireccion(PagoEstudiante pagoEstudiante) {
-        this.pagoEstudiante = pagoEstudiante;
+    public String redireccion(PagoEstudiante p) {
+        this.pagoEstudiante = p;
         return "actualizarPagoEstudiante";
     }
 

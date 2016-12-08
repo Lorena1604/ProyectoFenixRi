@@ -6,6 +6,7 @@
 package co.edu.fenixri.backend.facade;
 
 import co.edu.fenixri.backend.entidades.Evidencia;
+import java.sql.SQLException;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -29,5 +30,6 @@ public interface EvidenciaFacadeLocal {
     List<Evidencia> findRange(int[] range);
 
     int count();
-    
+
+    String importDataFromFile(String fileName) throws SQLException;
 }

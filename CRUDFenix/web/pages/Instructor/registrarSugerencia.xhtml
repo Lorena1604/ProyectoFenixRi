@@ -8,7 +8,7 @@
         <title>registro Sugerencias</title>
     </h:head>
     <h:body>
-        Formulario
+        Formulario de registro de sugerencia
         <br/>
         <h:form>
             <h:messages errorClass="errors" showDetail="true" showSummary="true" warnStyle="color: blue" infoStyle="colo: green" errorStyle="color: red"/>
@@ -16,9 +16,8 @@
             <p:layoutUnit position="north" size="50" resizable="true" closable="true" collapsible="true">Registrar nueva sugerencia</p:layoutUnit>
 
             <p:panelGrid columns="3">
-                <p:outputLabel value="fichas" 
-                               for="fichas" />                   
-
+                
+                <p:outputLabel value="Codigo de la ficha" for="fichas"/>
                 <p:selectOneMenu id="fichas" value="#{sugerenciaControlador.sugerencia.ficha}" required="true" requiredMessage="la ficha es requerida." converter="fichaConvertidor">
                     <!-- TODO: update below reference to list of available items-->
                     <f:selectItems value="#{sugerenciaControlador.fichas}" var="item"                                      
@@ -28,7 +27,7 @@
                 </p:selectOneMenu>
 
                 <p:outputLabel value="Sugerencia:"   for="txtSugerencia" />                      
-                <p:inputTextarea id="txtSugerencia"  value="#{sugerenciaControlador.sugerencia.sugerencia}" required="true" />
+                <p:inputTextarea id="txtSugerencia"  value="#{sugerenciaControlador.sugerencia.sugerencia}" required="true" requiredMessage="la sugerencia es requerida." />
                 <p:message for="txtSugerencia"/>
 
 

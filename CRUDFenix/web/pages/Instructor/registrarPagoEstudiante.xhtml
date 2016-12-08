@@ -5,20 +5,20 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Registro de pagos de estudiantes</title>
     </h:head>
     <h:body>
-
+        Formulario de registro de pago del estudiante
         <center>       
             <f:view>
 
 
                 <h:form>
-                    <h1><h:outputText value="Create/Edit"/></h1>
-                    <p:panelGrid columns="2">
+                    <h1><h:outputText value="registro de pago del estudiante"/></h1>
+                    <p:panelGrid columns="3">
 
-                        <p:outputLabel value="IdEstudiante:" for="idEstudiante" />
-                        <p:selectOneMenu id="idEstudiante" value="#{pagoEstudianteControlador.pagoEstudiante.idEstudiante}" required="true" requiredMessage="The identificacion field is required." converter="modificarUsuarioConvertidor">
+                        <p:outputLabel value="Codigo del Estudiante:" for="idEstudiante" />
+                        <p:selectOneMenu id="idEstudiante" value="#{pagoEstudianteControlador.pagoEstudiante.idEstudiante}" required="true" requiredMessage="La identificacion es requerida." converter="modificarUsuarioConvertidor">
                             <!-- TODO: update below reference to list of available items-->
                             <f:selectItems value="#{pagoEstudianteControlador.usuarios}" var="item"                                       
                                            itemLabel="#{item.idUsuario}"
@@ -27,17 +27,19 @@
                         </p:selectOneMenu>
 
                         <p:outputLabel value="FechaPago:" for="fechaPago" />
-                        <p:inputText id="fechaPago" value="#{pagoEstudianteControlador.pagoEstudiante.fechaPago}" title="FechaPago" required="true" requiredMessage="The FechaPago field is required.">
-                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        <p:inputText id="fechaPago" value="#{pagoEstudianteControlador.pagoEstudiante.fechaPago}" title="FechaPago" required="true" requiredMessage="la fecha de pago es requerida." placeholder="01/mm/yyyy">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
                         </p:inputText>
+
 
                         <p:outputLabel value="Monto:" for="monto" />
-                        <p:inputText id="monto" value="#{pagoEstudianteControlador.pagoEstudiante.monto}" title="Monto" required="true" requiredMessage="The Monto field is required."/>
+                        <p:inputText id="monto" value="#{pagoEstudianteControlador.pagoEstudiante.monto}" title="Monto" required="true" requiredMessage="El monto es requerido."/>
 
-                        <p:outputLabel value="Mensualidad:" for="mensualidad" />
-                        <p:inputText id="mensualidad" value="#{pagoEstudianteControlador.pagoEstudiante.mensualidad}" title="Mensualidad" required="true" requiredMessage="The Mensualidad field is required.">
-                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        <p:outputLabel value="Mensualidad(dia/mes/año):" for="mensualidad" />
+                        <p:inputText id="mensualidad" value="#{pagoEstudianteControlador.pagoEstudiante.mensualidad}" title="Mensualidad" required="true" requiredMessage="La mensualidad es requerida." placeholder="dd/mm/yyyy">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
                         </p:inputText>
+                        <h:commandButton actionListener="#{pagoEstudianteControlador.registrarPagoEstudiante()}" value="registrar" />
 
                     </p:panelGrid>
                 </h:form>

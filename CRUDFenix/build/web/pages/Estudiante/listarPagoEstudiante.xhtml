@@ -5,42 +5,49 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Lista de pago de estudiante</title>
     </h:head>
     <h:body>
 
         <f:view>
-
-
             <h:form>
-                <h1><h:outputText value="List"/></h1>
-                <p:dataTable value="#{sugerenciaControlador.listaSugerencias()}" var="item">
+                <h1><h:outputText value="Lista de pagos"/></h1>
+                <p:dataTable value="#{pagoEstudianteControlador.listarPagoEstudiante()}" var="item">
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="IdSugerencia"/>
+                            <h:outputText value="Idpago"/>
                         </f:facet>
-                        <h:outputText value="#{item.idSugerencia}"/>
+                        <h:outputText value="#{item.idpago}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Sugerencia"/>
+                            <h:outputText value="FechaPago"/>
                         </f:facet>
-                        <h:outputText value="#{item.sugerencia}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Fecha"/>
-                        </f:facet>
-                        <h:outputText value="#{item.fecha}">
-                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        <h:outputText value="#{item.fechaPago}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
                         </h:outputText>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Ficha"/>
+                            <h:outputText value="Monto"/>
                         </f:facet>
-                        <h:outputText value="#{item.ficha}"/>
+                        <h:outputText value="#{item.monto}"/>
                     </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Mensualidad"/>
+                        </f:facet>
+                        <h:outputText value="#{item.mensualidad}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="IdEstudiante"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idEstudiante}"/>
+                    </p:column>
+
 
                     <!--botones-->
 

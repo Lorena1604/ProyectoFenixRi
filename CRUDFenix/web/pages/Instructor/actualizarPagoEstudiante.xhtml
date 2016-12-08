@@ -9,7 +9,7 @@
     </h:head>
     <h:body>
 
-        Formulario de Actualizacion de Pago de estudiante
+        Formulario de actualización de Pago de estudiante
         <br/>
         <h:form>
 
@@ -19,21 +19,29 @@
 
             <p:panelGrid columns="3">
 
-                <p:outputLabel value="IdSugerencia:" for="idSugerencia" />
-                <p:inputText id="idSugerencia" value="#{sugerenciaControlador.sugerencia.idSugerencia}" title="IdSugerencia" />
-
-                <p:outputLabel value="Ficha:" for="ficha" />
-                <p:selectOneMenu id="ficha" value="#{sugerenciaControlador.sugerencia.ficha}" >
+                <p:outputLabel value="Codigo del Estudiante:" for="idEstudiante" />
+                <p:selectOneMenu id="idEstudiante" value="#{pagoEstudianteControlador.pagoEstudiante.idEstudiante}" required="true" requiredMessage="La identificacion es requerida." converter="modificarUsuarioConvertidor">
                     <!-- TODO: update below reference to list of available items-->
-                    <f:selectItems value="#{fixme}"/>
+                    <f:selectItems value="#{pagoEstudianteControlador.usuarios}" var="item"                                       
+                                   itemLabel="#{item.idUsuario}"
+                                   itemValue="#{item}"/> 
+                    <f:selectItems/>
                 </p:selectOneMenu>
 
-                <p:outputLabel value="Sugerencia:" for="sugerencia" />
-                <p:inputTextarea rows="4" cols="30" id="sugerencia" value="#{sugerenciaControlador.sugerencia.sugerencia}" title="Sugerencia"/>
+                <p:outputLabel value="FechaPago:" for="fechaPago" />
+                <p:inputText id="fechaPago" value="#{pagoEstudianteControlador.pagoEstudiante.fechaPago}" title="FechaPago" required="true" requiredMessage="la fecha de pago es requerida." placeholder="01/mm/yyyy">
+                    <f:convertDateTime pattern="dd/MM/yyyy" />
+                </p:inputText>
 
+                <p:outputLabel value="Monto:" for="monto" />
+                <p:inputText id="monto" value="#{pagoEstudianteControlador.pagoEstudiante.monto}" title="Monto" required="true" requiredMessage="El monto es requerido."/>
 
+                <p:outputLabel value="Mensualidad(dia/mes/año):" for="mensualidad" />
+                <p:inputText id="mensualidad" value="#{pagoEstudianteControlador.pagoEstudiante.mensualidad}" title="Mensualidad" required="true" requiredMessage="La mensualidad es requerida." placeholder="dd/mm/yyyy">
+                    <f:convertDateTime pattern="dd/MM/yyyy" />
+                </p:inputText>
 
-                <h:commandButton id="btnUpdateSugerencia" value="Actualizar" actionListener="#{sugerenciaControlador.actualizarSugerencia(sugerenciaControlador.actualizarSugerencia(sugerenciaControlador.sugerencia))}"/>
+                <h:commandButton id="btnUpdateSugerencia" value="Actualizar" actionListener="#{pagoEstudianteControlador.actualizarPagoEstudiante(pagoEstudianteControlador.pagoEstudiante)}"/>
 
             </p:panelGrid>
         </h:form>

@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Registro de evidencias</title>
+    </h:head>
+    <h:body>
+        Formulario de registro de evidencias
+        <center>       
+            <f:view>
+
+
+                <h:form>
+                    <h1><h:outputText value="registro de evidencias"/></h1>
+                    <p:tab>
+                        <p:fieldset legend="Cargar archivo pdf de documento de evidencia">
+
+
+                            <p:panelGrid columns="2">
+                                <p:outputLabel value="Cargar archivo" for="fileUpload" />
+                                <p:inputFile value="#{evidenciaControlador.fileUpload}" id="fileUpload" />
+
+                                <h:outputLabel value="Texto" for="txt" />
+                                <h:inputText id="txt" alt="cualqueir texto" value="#{fileUploadFormBean.texto}"required="true" requiredMessage="The Lugar field is required."/>
+
+                                <h:commandButton value="Cargar"/>
+                            </p:panelGrid>
+
+                            <!--En este ejemplo se muestra la carga de un archivo
+                            al servidor a la carpeta llamada pdf-->
+
+                            <h:form id="upload">
+                                <p:fileUpload fileUploadListener="#{subirArchivoBean.cargarArchivo}"
+                                              allowTypes="/(\.|\/)(pdf|jpg)$/" 
+                                              mode="advanced" 
+                                              auto="true" 
+                                              sizeLimit="50000000" 
+                                              label="Seleccione el archivo"
+                                              update="vista"
+                                              />
+                                <br/>
+
+                                <!--se lista el contenido de la carpeta y se coloca un enlace que la rerencia para
+                            descargar el archivo-->
+
+                                <p:dataTable id="vista" value="#{subirArchivoBean.listarContenido()}" var="item"
+                                             emptyMessage="No hay archivos cargados en la carpeta">
+                                    <p:column>
+                                        <f:facet name="header">
+                                            Archivo
+                                        </f:facet>
+                                        <h:outputText value="Ruta del archivo : #{item}" />
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">
+                                            enlace
+                                        </f:facet>
+                                        <h:outputLink value="#{item}">
+                                            <h:outputText value="Download"/>
+                                        </h:outputLink>
+
+                                    </p:column>
+                                </p:dataTable>
+
+
+                            </h:form>
+                        </p:fieldset>
+                    </p:tab>
+
+                    <p:fieldset>
+
+                        <p:panelGrid columns="3">
+                            <p:outputLabel value="Actividad:" for="idActividad" />
+                            <p:selectOneMenu id="idActividad" 
+                                             value="#{evidenciaControlador.evidencia.idActividad}" 
+                                             required="true" 
+                                             requiredMessage="El codigo de la actividad es requerido." 
+                                             converter="actividadConvertidor">
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{evidenciaControlador.actividades}" var="item"                                       
+                                               itemLabel="#{item.descripcionActividad}"
+                                               itemValue="#{item}"/> 
+                                <f:selectItems/>
+                            </p:selectOneMenu>
+                            <h:commandButton actionListener="#{evidenciaControlador.registroEvidencia()}" value="registrar" />
+
+                        </p:panelGrid>
+                    </p:fieldset>
+                </h:form>
+            </f:view>
+
+        </center>
+
+    </h:body>
+</html>

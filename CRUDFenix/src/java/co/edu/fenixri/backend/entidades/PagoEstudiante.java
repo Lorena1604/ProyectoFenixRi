@@ -6,6 +6,7 @@
 package co.edu.fenixri.backend.entidades;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -40,25 +41,38 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class PagoEstudiante implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idpago")
     private Integer idpago;
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "fechaPago")
     @Temporal(TemporalType.DATE)
     private Date fechaPago;
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "monto")
     private int monto;
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "mensualidad")
     @Temporal(TemporalType.DATE)
     private Date mensualidad;
+
+/*    Calendar c = Calendar.getInstance();
+
+    c.setTime (this.mensualidad);
+
+    c.set (Calendar.DAY,01);
+    fromDate  = c.getTime();
+*/
+    
     @JoinColumn(name = "idEstudiante", referencedColumnName = "idUsuario")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario idEstudiante;
@@ -141,5 +155,11 @@ public class PagoEstudiante implements Serializable {
     public String toString() {
         return "co.edu.fenixri.backend.controladores.PagoEstudiante[ idpago=" + idpago + " ]";
     }
-    
+
+    public static class mensualidad {
+
+        public mensualidad() {
+        }
+    }
+
 }
