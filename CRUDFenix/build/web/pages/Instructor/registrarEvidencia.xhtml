@@ -9,90 +9,72 @@
     </h:head>
     <h:body>
         Formulario de registro de evidencias
-        <center>       
-            <f:view>
+
+        <h:form>
+            <h1><h:outputText value="registro de evidencias"/></h1>
+            <p:tab>
+                <p:fieldset legend="Cargar archivo pdf de documento de evidencia">
 
 
-                <h:form>
-                    <h1><h:outputText value="registro de evidencias"/></h1>
-                    <p:tab>
-                        <p:fieldset legend="Cargar archivo pdf de documento de evidencia">
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="Cargar archivo" for="fileUpload" />
+                        <h:inputFile value="#{evidenciaControlador.fileUpload}" id="fileUpload" />
+
+                        <h:outputLabel value="Texto" for="txt" />
+                        <h:inputText id="txt" alt="referencia" value="#{fileUploadFormBean.texto}"required="true" requiredMessage="este campo es requerido."/>
+
+                        <h:commandButton value="Cargar"/>
 
 
-                            <p:panelGrid columns="2">
-                                <p:outputLabel value="Cargar archivo" for="fileUpload" />
-                                <p:inputFile value="#{evidenciaControlador.fileUpload}" id="fileUpload" />
+                    </h:panelGrid>
 
-                                <h:outputLabel value="Texto" for="txt" />
-                                <h:inputText id="txt" alt="cualqueir texto" value="#{fileUploadFormBean.texto}"required="true" requiredMessage="The Lugar field is required."/>
+                    <!--En este ejemplo se muestra la carga de un archivo
+                    al servidor a la carpeta llamada pdf-->
 
-                                <h:commandButton value="Cargar"/>
-                            </p:panelGrid>
+                    <h:panelGrid rendered="#{not empty(evidenciaControlador.fileUpload)}" columns="2"  >
 
-                            <!--En este ejemplo se muestra la carga de un archivo
-                            al servidor a la carpeta llamada pdf-->
+                        <h:outputText value="nombre archivo "/>
+                        <h:outputText value="#{evidenciaControlador.fileUpload.submittedFileName}" />
 
-                            <h:form id="upload">
-                                <p:fileUpload fileUploadListener="#{subirArchivoBean.cargarArchivo}"
-                                              allowTypes="/(\.|\/)(pdf|jpg)$/" 
-                                              mode="advanced" 
-                                              auto="true" 
-                                              sizeLimit="50000000" 
-                                              label="Seleccione el archivo"
-                                              update="vista"
-                                              />
-                                <br/>
+                        <h:outputText value="contentType:" />
+                        <h:outputText value="#{evidenciaControlador.fileUpload.contentType}" />
 
-                                <!--se lista el contenido de la carpeta y se coloca un enlace que la rerencia para
-                            descargar el archivo-->
+                        <h:outputText value="size:" />
+                        <h:outputText value="#{((evidenciaControlador.fileUpload.size)/1024)}" >
+                            <f:convertNumber pattern="###,### Kb" />
+                        </h:outputText>
 
-                                <p:dataTable id="vista" value="#{subirArchivoBean.listarContenido()}" var="item"
-                                             emptyMessage="No hay archivos cargados en la carpeta">
-                                    <p:column>
-                                        <f:facet name="header">
-                                            Archivo
-                                        </f:facet>
-                                        <h:outputText value="Ruta del archivo : #{item}" />
-                                    </p:column>
-                                    <p:column>
-                                        <f:facet name="header">
-                                            enlace
-                                        </f:facet>
-                                        <h:outputLink value="#{item}">
-                                            <h:outputText value="Download"/>
-                                        </h:outputLink>
+                        <h:outputText value="contenido " />
+                        <h:outputText value="#{evidenciaControlador.fileUpload.inputStream}" />
 
-                                    </p:column>
-                                </p:dataTable>
+                        <h:outputText value="Ruta " />
+                        <h:outputText value="#{evidenciaControlador.servletContext.getRealPath(pdf)}\\pdf\\" />
+                    </h:panelGrid>
 
+                </p:fieldset>
+            </p:tab>
 
-                            </h:form>
-                        </p:fieldset>
-                    </p:tab>
+            <p:tab>
+                <p:fieldset legend="Cargar archivo con primefaces">
 
-                    <p:fieldset>
+                    <p:panelGrid columns="3">
+                        <p:outputLabel value="Actividad:" for="idActividad" />
+                        <p:selectOneMenu id="idActividad" 
+                                         value="#{evidenciaControlador.evidencia.idActividad}" 
+                                         required="true" 
+                                         requiredMessage="La actividad es requerida." 
+                                         converter="actividadConvertidor">
+                            <!-- TODO: update below reference to list of available items-->
+                            <f:selectItems value="#{evidenciaControlador.actividades}" var="item"                                       
+                                           itemLabel="#{item.descripcionActividad}"
+                                           itemValue="#{item}"/> 
+                            <f:selectItems/>
+                        </p:selectOneMenu>
+                        <h:commandButton actionListener="#{evidenciaControlador.registroEvidencia()}" value="registrar" />
 
-                        <p:panelGrid columns="3">
-                            <p:outputLabel value="Actividad:" for="idActividad" />
-                            <p:selectOneMenu id="idActividad" 
-                                             value="#{evidenciaControlador.evidencia.idActividad}" 
-                                             required="true" 
-                                             requiredMessage="El codigo de la actividad es requerido." 
-                                             converter="actividadConvertidor">
-                                <!-- TODO: update below reference to list of available items-->
-                                <f:selectItems value="#{evidenciaControlador.actividades}" var="item"                                       
-                                               itemLabel="#{item.descripcionActividad}"
-                                               itemValue="#{item}"/> 
-                                <f:selectItems/>
-                            </p:selectOneMenu>
-                            <h:commandButton actionListener="#{evidenciaControlador.registroEvidencia()}" value="registrar" />
-
-                        </p:panelGrid>
-                    </p:fieldset>
-                </h:form>
-            </f:view>
-
-        </center>
-
+                    </p:panelGrid>                
+                </p:fieldset>        
+            </p:tab>
+        </h:form>
     </h:body>
 </html>

@@ -21,7 +21,7 @@
                 <p:selectOneMenu id="fichas" value="#{sugerenciaControlador.sugerencia.ficha}" required="true" requiredMessage="la ficha es requerida." converter="fichaConvertidor">
                     <!-- TODO: update below reference to list of available items-->
                     <f:selectItems value="#{sugerenciaControlador.fichas}" var="item"                                      
-                                   itemLabel="#{item.idFicha}"
+                                   itemLabel="#{item.numeroRegistro}"
                                    itemValue="#{item}"/> 
                     <f:selectItems/>
                 </p:selectOneMenu>

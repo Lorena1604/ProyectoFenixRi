@@ -133,6 +133,17 @@ public class EvidenciaControlador implements Serializable {
 
     }
 
+    
+    
+        /**
+     * En este médoto se recibe el evento desde primefaces en donde viene el archivo que se desea subir
+     * Previamente se ha definido la ruta de la carpeta referente al proyecto con la variable url
+     * El proceso es tomar el archivo que se cargar en terminos de Inputstream y se crea y se escribe en un nuevo archivo
+     * en la ruta en el servidor
+     * @param event 
+     */
+    
+    
     public void cargarArchivo(FileUploadEvent event) {
 
         try {

@@ -2,16 +2,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Registro de evidencias</title>
+        <title>Actualizacion de evidencias</title>
     </h:head>
     <h:body>
-        Formulario de registro de evidencias
-
+        Formulario de actualizacion de evidencias
+        <br/>
         <h:form>
-            <h1><h:outputText value="registro de evidencias"/></h1>
+
+            <h:messages errorClass="errors" showDetail="true" showSummary="true" warnStyle="color: blue" infoStyle="colo: green" errorStyle="color: red"/>
+
+            <p:layoutUnit position="north" size="50" resizable="true" closable="true" collapsible="true">Actualizar evidencia</p:layoutUnit>
+
             <p:tab>
                 <p:fieldset legend="Cargar archivo pdf de documento de evidencia">
 
@@ -70,11 +74,13 @@
                                            itemValue="#{item}"/> 
                             <f:selectItems/>
                         </p:selectOneMenu>
-                        <h:commandButton actionListener="#{evidenciaControlador.registroEvidencia()}" value="registrar" />
+                        <h:message for="idActividad"/>
 
+                        <h:commandButton actionListener="#{evidenciaControlador.actualizarEvidencia(evidenciaControlador.evidencia)}" value="Actualizar" />
                     </p:panelGrid>                
                 </p:fieldset>        
             </p:tab>
         </h:form>
     </h:body>
 </html>
+

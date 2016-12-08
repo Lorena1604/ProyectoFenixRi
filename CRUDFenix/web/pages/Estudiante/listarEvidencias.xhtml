@@ -1,36 +1,50 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
 
-        <h1><h:outputText value="Lista de productos Cargados"/></h1>
-        <p:dataTable id="lista" value="#{masivoControllerBean.listarProductos()}" var="item" >
-            <p:column>
-                <f:facet name="header">
-                    <h:outputText value="Codigo del Producto"/>
-                </f:facet>
-                <h:outputText value="#{item.codProducto}"/>
-            </p:column>
-            <p:column>
-                <f:facet name="header">
-                    <h:outputText value="Nombre del Producto"/>
-                </f:facet>
-                <h:outputText value="#{item.nombreProducto}"/>
-            </p:column>
-            <p:column>
-                <f:facet name="header">
-                    <h:outputText value="Valor Inicial"/>
-                </f:facet>
-                <h:outputText value="#{item.valorInicial}"/>
-            </p:column>
-        </p:dataTable>
-        </p:fieldset> 
+        <f:view>    
 
 
+            <h:form>
+                <h1><h:outputText value="Lista de evidencias"/></h1>
+                <p:dataTable id="lista" value="#{evidenciaControlador.listaEvidencias()}" var="item" >
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Codigo de evidencia"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idEvidencias}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Descripcion de la actividad"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idActividad.descripcionActividad}"/>
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Eliminar"/>
+                        </f:facet>
+                        <h:commandButton id="btnDeleteEvidencia" value="Eliminar" actionListener="#{evidenciaControlador.eliminarEvidencia(item)}" onclick="return confirm('¿Esta seguro de eliminar?')"/>
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Actualizar"/>
+                        </f:facet>
+                        <h:commandButton id="btnUpdateEvidencia" value="Actualizar" actionListener="#{evidenciaControlador.redireccion(item)}" action="actualizarEvidencia.xhtml"/>
+                    </p:column>
+
+                </p:dataTable>
+            </h:form>
+        </f:view> 
     </h:body>
 </html>
 
